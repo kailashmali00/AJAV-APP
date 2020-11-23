@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="favicon.ico">
+<title>DS4U</title>
+<!-- Google Web Font -->
+<!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css'> -->
+<!-- Bootstrap core CSS -->
+<link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- Just for debugging purposes. Don't actually copy this line! -->
+<!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!-- Custom styles for this template -->
+<link href="../resources/css/custom-theme.css" rel="stylesheet">
+<!--[if lt IE 9]>
+      <link href="css/ie8.css" rel="stylesheet">
+    <![endif]-->
+<!--[if lt IE 8]>
+      <link href="css/ie7.css" rel="stylesheet">
+    <![endif]-->
+</head>
+<body class="admin-page doctor-admin">
+<div class="container-fluid wrapper">
+  <!-- Header -->
+  <header class="header">
+    <h1 class="logo"><a href="#">RPMS</a></h1>
+    <!-- <div class="main-menu dropdown"> <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="fa fa-bars"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="">Menu Item1</a></li>
+        <li><a href="">Menu Item2</a></li>
+        <li><a href="">Menu Item3</a></li>
+        <li><a href="">Menu Item4</a></li>
+      </ul>
+    </div>
+    <div class="top-search"> <span class="fa fa-search"></span>
+      <input type="text" value="" placeholder="find patients" class="inputbox">
+    </div> -->
+    <div class="user-nav">
+      <div class="dropdown visible-xs"> <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"> <img  src="../resources/images/demo.png" alt=""> </a>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+         <!--  <li><a href="" title="Notifications"><span class="fa fa-bell"></span> Notifications</a></li> -->
+          <li><a href="" title="Messages"><span class="fa fa-envelope"></span> Messages</a></li>
+          <!-- <li><a href="" title="My Account"><span class="fa fa-cog"></span> My Account</a></li> -->
+          <li><a href="" title="Logout"><span class="fa fa-power-off"></span> Logout</a></li>
+        </ul>
+      </div>
+      <div class="row hidden-xs">
+        <div class="col-xs-4">
+          <div class="img"><img id="img"  src="../resources/images/demo.png" alt=""></div>
+        </div>
+        <div class="col-xs-8">
+          <div class="user-name"><span class="blue">Hi</span><span id="user"></span></div>
+          <ul class="list-inline">
+           <!--  <li><a href="" title="Notifications"><span class="fa fa-bell"></span></a></li> -->
+            <!-- <li><a href="" title="Messages"><span class="fa fa-envelope"></span></a><sup id="message" style="color:white; font-size:14px;"></sup> -->
+            <li class="dropdown"><a data-toggle="dropdown" href="" title="Messages"><span class="fa fa-envelope"></span></a><sup id="message" style="color:white; font-size:14px;"></sup>
+              <ul id="notification" class="dropdown-menu dropdown-menu-right" role="menu">
+                
+              </ul>
+            </li>
+            <!-- <li><a href="" title="My Account"><span class="fa fa-cog"></span></a></li> -->
+            <li><a href="../login.html" title="Logout"><span class="fa fa-power-off"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </header>
+  <!-- Container -->
+  <div class="main-container">
+    <div class="dashboard-block">
+      <div class="row">
+        <div class="col-sm-2">
+         <a href="javascript:void(0)" id="assign_patient" style="text-decoration:none;" >
+          <div id="doc1" class="block active text-center">
+            <h1 id="doctor1" class="orng">0</h1>
+            <p class="black">Assigned Patients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <div class="block-footer gray">View Patients </div>
+          </div></a>
+        </div>
+        <div class="col-sm-2 totl-block" >
+          <div id="doc6" class="block text-center ">
+            <h1 id="doctor6" class="cyan">0</h1>
+            <p>Total Patients <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --></p>
+              
+            <div class="block-footer"><a href="javascript:void(0)" id="view_all_patient" class="gray">View All Patient</a> </div>
+          </div>
+        </div>
+        <div class="col-sm-2">
+        <a href="javascript:void(0)" id="assign_patient_with_unread_point" style="text-decoration:none;">
+          <div id="doc2" class="block text-center">
+            <h1 id="doctor2" class="blue">0</h1>
+            <p class="black">Patients with Unread Data
+             </p>
+            <div class="block-footer gray">View Data</div>
+          </div></a>
+        </div>
+         <div class="col-sm-2">
+         <a href="javascript:void(0)" id="assign_patient_with_problematic" style="text-decoration:none;">
+          <div id="doc5" class="block text-center">
+            <h1  id="doctor5" class="pink">0</h1>
+            <p class="black">Patients with Unread Problematic Data
+            </p>
+            <div class="block-footer gray">View Problematic Data</div>
+          </div></a>
+        </div>
+        <div class="col-sm-2">
+        <a href="javascript:void(0)" id="assign_patient_with_unread_message_nurse" style="text-decoration:none;">
+          <div id="doc3" class="block text-center">
+            <h1 id="doctor3" class="green">0</h1>
+            <p class="black">Unread Messages
+             From Nurses</p>
+            <div class="block-footer gray">View  Messages</div>
+          </div></a>
+        </div>
+        <div class="col-sm-2">
+        <a href="javascript:void(0)" id="assign_patient_with_unread_message_patient" style="text-decoration:none;">
+          <div id="doc4" class="block text-center">
+            <h1 id="doctor4" class="green">0</h1>
+            <p class="black">Unread Messages
+             From Patients</p>
+            <div class="block-footer gray">View  Messages</div>
+          </div>
+          </a>
+        </div>
+       
+        
+      </div>
+    </div>
+    <div class="dashboard-block1">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="block">
+            <h3 id="person_details" class="title blue uprCase">Assigned Patients</h3>
+            <div class="search-panel"> <span class="fa fa-search"></span>
+              <div id="search_details"><input type="text" value="" placeholder="find patients" class="inputbox viewpatient">
+             <!--  <label class="checkbox-inline"><input type="checkbox" value="Critical" class="searchpatient">Critical</label>
+              <label class="checkbox-inline"><input type="checkbox" value="non-compliant" class="searchpatient">Non-Compliant</label>
+              <label class="checkbox-inline"><input type="checkbox" value="generally_compliant" class="searchpatient">Generally Compliant</label> -->
+              </div>
+            </div>
+            <div id="search_patient" class="well row">
+              <div class="col-md-6">
+                <label class="checkbox-inline"><input type="checkbox" value="Critical" class="searchpatient searchpatientvalue">Critical</label>
+                <label class="checkbox-inline"><input type="checkbox" value="Not-Compliant" class="searchpatient searchpatientvalue">Not-Compliant</label>
+                <label class="checkbox-inline"><input type="checkbox" value="Generally-Compliant" class="searchpatient searchpatientvalue">Generally Compliant</label>
+              </div>
+              <div class="col-md-6 text-right">
+                <label class="checkbox-inline"><input type="checkbox" value="0" class="searchpatient searchpatientstatus">Active</label>
+                <label class="checkbox-inline"><input type="checkbox" value="1" class="searchpatient searchpatientstatus">Inactive</label>
+                <!-- <label class="checkbox-inline"><input type="checkbox" value="generally_compliant" class="searchpatient">Generally Compliant</label> -->
+              </div>
+          </div>
+            <ul id="showList" class="patients-list" style="height: 290px; overflow: auto;">
+             
+            </ul>
+            <!-- <div class="text-center font12 uprCase"><a href="">Load More Patients</a></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="font12 text-center">&copy; Copyright 2014 Remote Patient Monitoring System. All Rights Reserved.</p>
+  </footer>
+</div>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/docs.min.js"></script>
+<script src="../resources/js/public.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+<script type="text/javascript" src="../resources/js/rpms/main.js"></script>
+
+
+<script >
+        checkAccessToken();
+
+        username=$.cookie("username");
+        access_token=$.cookie("access_token");
+        userUniqueID=$.cookie("userUniqueID");
+        
+        $("#user").html(", "+$.cookie("name"));
+        $("#img").attr("src",$.cookie("image_url"));
+        var dateFormat="";
+
+        console.info(username+"/"+access_token+"/"+userUniqueID);
+
+         var dashboardCount=function(){
+          $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/dashboard_count?access_token="+$.cookie("access_token"),
+              data: "docID="+$.cookie("docID")
+            })
+          .done(function( msg ) {
+            $("#doctor1").html(msg.object.doc1);
+            $("#doctor2").html(msg.object.doc2);
+            $("#doctor3").html(msg.object.doc3);
+            $("#doctor4").html(msg.object.doc4);
+            $("#doctor5").html(msg.object.doc5);
+            $("#doctor6").html(msg.object.doc6);
+
+          })
+          .fail(function() {
+             // login();
+          });
+
+           $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/get_doctor?access_token="+$.cookie("access_token"),
+              data: "id="+$.cookie("docID")
+            })
+          .done(function( msg ) {
+
+            $.cookie("name",msg.object.firstname+" "+msg.object.lastname);
+            $.cookie("image_url",msg.object.image);
+
+            $("#user").html(", "+$.cookie("name"));
+            $("#img").attr("src",$.cookie("image_url"));
+
+
+            gethcg(msg.object.hcgID);
+
+          })
+          .fail(function() {
+            //  login();
+          });
+
+          var gethcg=function(hcgID){
+              $.ajax({
+                      type: "POST",
+                      url: basicUrl+"/rpms/doc/hcg_admin?access_token="+$.cookie("access_token"),
+                      data : "hcgID="+hcgID
+
+                    })
+                  .done(function( msg ) {
+
+                    if(msg.object!=null){ 
+                      var bp=msg.object.bloodPressure;
+                      var bp1=bp.split(",");
+                      var unitbloodPressure=bp1[1];
+                      var bs=msg.object.bloodSugar;
+                      var bs1=bs.split(",");
+                      var unitbloodSugar=bs1[1];
+                      var pbm=msg.object.bloodPressureMax;
+                      var pbm1=pbm.split(",");
+                      var unitbloodPressureMax=pbm1[1];
+                      var bsm=msg.object.bloodSugarMax;
+                      var bsm1=bsm.split(",");
+                      var unitbloodSugarMax=bsm1[1];
+                      $.cookie("unitbloodPressure",unitbloodPressure);
+                      $.cookie("unitbloodSugar",unitbloodSugar);  
+                      $.cookie("unitbloodPressureMax",unitbloodPressureMax);
+                      $.cookie("unitbloodSugarMax",unitbloodSugarMax);
+
+                       dateFormat=msg.object.dateformat;
+                       if(dateFormat=="MonthDayYear"){
+                         $.cookie("dateFormat","MMM DD HH:mm");
+                       }
+                       
+                       else{
+                             $.cookie("dateFormat","DD MMM HH:mm");
+                       }
+                       
+                        var cat=msg.object.categories.split(",");
+                        console.info(cat);
+                        $.cookie("cat1",cat[0]);
+                        $.cookie("cat2",cat[1]);
+                        $.cookie("cat3",cat[2]);
+
+                        var viewSearch="<div class='col-md-6'><label class='checkbox-inline'><input type='checkbox' value='Critical' class='searchpatient searchpatientvalue'>"+$.cookie('cat1')+"</label><label class='checkbox-inline'><input type='checkbox' value='Generally-Compliant' class='searchpatient searchpatientvalue'>"+$.cookie('cat2')+"</label><label class='checkbox-inline'><input type='checkbox' value='Not-Compliant' class='searchpatient searchpatientvalue'>"+$.cookie('cat3')+"</label></div><div class='col-md-6 text-right'><label class='checkbox-inline'><input type='checkbox' value='0' class='searchpatient searchpatientstatus'>Active</label><label class='checkbox-inline'><input type='checkbox' value='1' class='searchpatient searchpatientstatus'>Inactive</label></div>";
+
+                        $( "#search_patient" ).html(viewSearch);
+
+                       $(".searchpatient").click(function(){
+                        console.info("click check box");
+                        viewSearchAssignedPatient($(".viewpatient").val());
+                      });
+                    }
+
+                  })
+                  .fail(function() {
+                    alert("Patient Not Found.");
+                     // login();
+                  });
+            };
+        };
+
+         dashboardCount();
+
+
+         // add patient
+         $("#assign_patient").click(function(){
+            removeClass();
+            $( "#doc1" ).addClass( "active" );
+
+            $("#person_details").html("Assigned Patients");
+            $(".search-panel").show();
+            
+             $("#search_details").empty();
+            var viewText="<input type='text' value='' placeholder='find patients' class='inputbox viewpatient'>";
+            $( "#search_details" ).html(viewText);
+
+
+            $("#search_patient").empty();
+
+             var viewSearch="<div class='col-md-6'><label class='checkbox-inline'><input type='checkbox' value='Critical' class='searchpatient searchpatientvalue'>"+$.cookie('cat1')+"</label><label class='checkbox-inline'><input type='checkbox' value='Not-Compliant' class='searchpatient searchpatientvalue'>"+$.cookie('cat3')+"</label><label class='checkbox-inline'><input type='checkbox' value='Generally-Compliant' class='searchpatient searchpatientvalue'>"+$.cookie('cat2')+"</label></div><div class='col-md-6 text-right'><label class='checkbox-inline'><input type='checkbox' value='0' class='searchpatient searchpatientstatus'>Active</label><label class='checkbox-inline'><input type='checkbox' value='1' class='searchpatient searchpatientstatus'>Inactive</label></div>";
+
+            $( "#search_patient" ).html(viewSearch);
+
+      
+            $(".viewpatient").keyup(function(event){
+                viewSearchAssignedPatient($(".viewpatient").val());
+            });
+
+            $(".searchpatient").click(function(event){
+                viewSearchAssignedPatient($(".viewpatient").val());
+            });
+
+            assignedPatient();
+
+         });
+
+         var assignedPatient=function(){
+              $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/view_person_details?access_token="+$.cookie("access_token"),
+              data: "personID=assingedpatient&docID="+$.cookie("docID")
+                })
+              .done(function( msg ) {
+                console.info(msg.listentity[0]);
+                $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                }
+
+                $.each( msg.listentity, function( key, value ) {
+
+                list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                list+="<div class='text-right'><button class='btn btn-success btn-xs uprCase comment_patient_doc' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>Patient Comment</button>&nbsp;<button class='btn btn-success btn-xs uprCase assingpatient' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>&nbspData History</button>&nbsp<button class='btn btn-success btn-xs uprCase patient_demographic' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span> Patient Demographic</button></div></div>";
+
+                if(value.image==null)
+                {
+                    list+="<div class='img'><img src='../resources/images/demo.png' alt=''></div>";
+                    
+                }
+                else{
+                    list+="<div class='img'><img src='"+value.image+"' alt=''></div>";
+                }
+                list+="<div class='name'><a class='black' href='pateint-data-doctor.html?id="+value.id+"'>"+value.firstname+" "+value.lastname+"</a></div>";
+
+
+                var val="";
+
+                 if(value.categories=="Generally-Compliant")
+                {
+                    val=$.cookie('cat2');
+                }
+                else if(value.categories=="Critical")
+                {
+                  val=$.cookie('cat1');
+                }
+                else if(value.categories=="Not-Compliant")
+                {
+                  val=$.cookie('cat3');
+                }
+
+                list+="<div class='date gray font12'>"+value.email+" | "+value.date_of_birth+" | "+(( value.sex =='male') ? 'Male' : ' FeMale') +" | "+value.mr_number+" | "+val+" </div></li>";
+
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+
+                 $(".assingpatient").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                
+                        window.location.href = "pateint-data-doctor.html?id="+id;
+                  
+                  
+               });
+                  $(".comment_patient_doc").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "../message/patientcomment.html?id="+id;
+               });
+
+
+                 $(".patient_demographic").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "patient_demographic.html?id="+id;
+               });
+                 
+
+              })
+              .fail(function() {
+                  //alert("Error");
+                   console.info("Error");
+              });
+
+
+         };
+        assignedPatient();
+
+
+
+        $("#assign_patient_with_unread_point").click(function(){
+            removeClass();
+            $( "#doc2" ).addClass( "active" );
+            $("#showList").empty();
+            $("#person_details").html("Assigned Patients With UnRead Data");
+            $("#search_details").empty();
+
+             $("#search_patient").empty();
+
+            $(".search-panel").hide();
+          assign_patient_with_unread_point();
+         });
+
+        $("#assign_patient_with_unread_message_nurse").click(function(){ 
+            removeClass();
+            $( "#doc3" ).addClass( "active" );
+            $("#showList").empty();
+
+            $("#person_details").html("UnRead Messages From Nurse");
+            $("#search_details").empty();
+
+             $("#search_patient").empty();
+
+            $(".search-panel").hide();
+            assign_patient_with_unread_message_nurse();
+         });
+
+        $("#assign_patient_with_unread_message_patient").click(function(){ 
+            removeClass();
+            $( "#doc4" ).addClass( "active" );
+            $("#showList").empty();
+
+            $("#person_details").html("UnRead Message From Patient");
+            $("#search_patient").empty();
+
+            $(".search-panel").hide();
+            
+            assign_patient_with_unread_message_patient();
+         });
+
+        $("#assign_patient_with_problematic").click(function(){
+            removeClass();
+            $( "#doc5" ).addClass( "active" );
+
+            $("#showList").empty();
+
+            $("#person_details").html("Assigned Patients With Problematic Data");
+            $("#search_details").empty();
+
+             $("#search_patient").empty();
+
+            $(".search-panel").hide();
+
+            assign_patient_with_problematic();
+         });
+
+
+         $("#view_all_patient").click(function(){
+            removeClass();
+            $( "#doc6" ).addClass( "active" );
+
+            $("#person_details").html("View All Patients");
+            $(".search-panel").show();
+            
+             $("#search_details").empty();
+            var viewText="<input type='text' value='' placeholder='find patients' class='inputbox viewunpatient'>";
+            $( "#search_details" ).html(viewText);
+
+
+            $("#search_patient").empty();
+
+           var viewSearch="<div class='col-md-6'><label class='checkbox-inline'><input type='checkbox' value='Critical' class='searchpatient searchpatientvalue'>"+$.cookie('cat1')+"</label><label class='checkbox-inline'><input type='checkbox' value='Not-Compliant' class='searchpatient searchpatientvalue'>"+$.cookie('cat3')+"</label><label class='checkbox-inline'><input type='checkbox' value='Generally-Compliant' class='searchpatient searchpatientvalue'>"+$.cookie('cat2')+"</label></div><div class='col-md-6 text-right'><label class='checkbox-inline'><input type='checkbox' value='0' class='searchpatient searchpatientstatus'>Active</label><label class='checkbox-inline'><input type='checkbox' value='1' class='searchpatient searchpatientstatus'>Inactive</label></div>";
+
+            $( "#search_patient" ).html(viewSearch);
+
+            $(".viewunpatient").keyup(function(event){
+                viewSearchUnAssignedPatient($(".viewunpatient").val());
+            });
+
+            $(".searchpatient").click(function(event){
+                viewSearchUnAssignedPatient($(".viewunpatient").val());
+            });
+
+            viewPatient();
+         });
+var assign_patient_with_unread_point=function(){ console.info("assign_patient_with_unread_point");
+           $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/patientOfUnreadDataPoints?access_token="+$.cookie("access_token"),
+              data: "id="+$.cookie("docID")
+                })
+              .done(function( msg ) {
+                console.info(msg);
+                 $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                  
+                }
+
+                $.each( msg.listentity, function( key, value ) {
+
+                list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                list+="<div class='text-right'><button class='btn btn-success btn-xs uprCase patient_demographic' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>Data History</button></div></div>";
+
+                
+                if(value.image==null)
+                {
+                    list+="<div class='img'><img src='../resources/images/demo.png' alt=''></div>";
+                    
+                }
+                else{
+
+                    list+="<div class='img'><img src='"+value.image+"' alt=''></div>";
+                }
+
+              /*  list+="<div class='name blue'><a class='black' href='pateint-data-doctor.html?id="+value.id+"'>"+value.firstname+" "+value.lastname+" ("+value.mr_number+")</a></div>";*/
+                list+="<div class='name blue'>"+value.firstname+" "+value.lastname+" ("+value.mr_number+")</div>";
+
+                list+="<div class='date gray font12'> Email-ID : "+value.email+" | Date Of Birth : "+value.date_of_birth+" | Category : "+value.categories+"</div></li>";
+
+               /* if(value.measurementtype=='blood sugar')
+                {
+                  if(value.bloodsugurMax>110)
+                  {
+                     list+="<div class='date gray font12'> Blood Sugur : "+value.bloodsugurMax+" "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" | Target : "+value.glucoseMin+" - "+value.glucoseMax+" | High </div></li>";
+                  }
+                  else{
+                       list+="<div class='date gray font12'> Blood Gulcose : "+value.bloodsugur+" "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" | Target : "+value.glucoseMin+" - "+value.glucoseMax+"| Low </div></li>";
+                  }
+
+                  
+                }
+                else{
+
+                  if(value.pressuresystolic>value.bloodPressureMax)
+                  {
+                     list+="<div class='date gray font12'>  Blood Pressure : "+value.pressuresystolic+"-"+value.pressurediastolic+" | "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" |Target : "+value.bloodPressureMin+" - "+value.bloodPressureMax+" | High </div></li>";
+                  }
+                  else{
+                       list+="<div class='date gray font12'>  Blood Pressure : "+value.pressuresystolic+"-"+value.pressurediastolic+" | "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" |Target : "+value.bloodPressureMin+" - "+value.bloodPressureMax+"| Low </div></li>";
+                  }
+
+                  
+                }*/
+
+            
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+                   $(".patient_demographic").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "pateint-data-doctor.html?id="+id;
+               });
+
+              });
+
+        };
+
+       var assign_patient_with_unread_message_nurse=function(){ console.info("assign_patient_with_unread_message_nurse");
+           $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/unread_message?access_token="+$.cookie("access_token"),
+              data: "id="+$.cookie("docID")
+                })
+              .done(function( msg ) {
+                console.info(msg);
+                 $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                  
+                }
+
+                $.each( msg.table, function( key, value ) {
+                   
+                  if(value.isSentNures==1)
+                  {
+
+                      list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                      list+="<div class='text-right'><button class='btn btn-success btn-xs uprCase nurse_unread_mes' data-pat='"+value.patientID+"'  data-value='"+value.docID+"'><span class='fa fa-file-pdf-o'></span>View Messages</button></div></div>";
+
+                      list+="<div class='name blue'>"+value.nurseName+"  Messaged You.</div>";
+
+                  }
+               
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+
+                 $(".nurse_unread_mes").click(function(event){ 
+
+                       var patientId=$(this).data('pat');
+
+                       var docID=$(this).data('value');
+
+                        console.info('patient id:-'+patientId +"/ doc ID:- "+ docID );
+                        window.location.href = "../message/nurse-doctor-message.html?patientID="+patientId+"&value="+docID+"&r=d";
+                   });
+              });
+
+        };
+
+var assign_patient_with_unread_message_patient=function(){ console.info("assign_patient_with_unread_message_patient");
+          $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/unread_message?access_token="+$.cookie("access_token"),
+              data: "id="+$.cookie("docID")
+                })
+              .done(function( msg ) {
+                console.info(msg);
+                 $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                  
+                }
+
+                $.each( msg.table, function( key, value ) {
+
+                  if(value.isSentPatient==1)
+                  {
+
+                      list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                      list+="<div class='text-right'><button class='btn btn-success btn-xs uprCase patient_unread_mes' data-pat='"+value.patientID+"'  data-value='"+value.docID+"'><span class='fa fa-file-pdf-o'></span>View Messages</button></div></div>";
+
+                      list+="<div class='name blue'>"+value.patientName+"  Messaged You.</div>";
+
+                  }
+               
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+
+                 $(".patient_unread_mes").click(function(event){ 
+
+                       var patientId=$(this).data('pat');
+
+                       var docID=$(this).data('value');
+
+                        console.info('patient id:-'+patientId +"/ doc ID:- "+ docID );
+                        window.location.href = "../message/messgae.html?patientID="+patientId+"&value="+docID+"&r=d";
+                   });
+              });
+        };
+
+
+
+        var assign_patient_with_problematic=function(){ console.info("assign_patient_with_problematic");
+           $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/assignedPatientWithProblematicData?access_token="+$.cookie("access_token"),
+              data: "id="+$.cookie("docID")
+                })
+              .done(function( msg ) {
+                console.info(msg);
+                 $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+
+                }
+
+                $.each( msg.listentity, function( key, value ) {
+
+                list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                list+="<div class='text-right'><button class='btn btn-success btn-xs uprCase patient_demographicprob' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>Data History</button></div></div>";
+
+                
+              if(value.image==null)
+                {
+                    list+="<div class='img'><img src='../resources/images/demo.png' alt=''></div>";
+                    
+                }
+                else{
+                    list+="<div class='img'><img src='"+value.image+"' alt=''></div>";
+                }
+               /* list+="<div class='name blue'><a class='black' href='pateint-data-doctor.html?id="+value.id+"'>"+value.firstname+" "+value.lastname+" ("+value.mr_number+")</a></div>";*/
+                list+="<div class='name blue'>"+value.firstname+" "+value.lastname+" ("+value.mr_number+")</div>";
+
+                list+="<div class='date gray font12'> Email-ID : "+value.email+" | Date Of Birth : "+value.date_of_birth+" | Category : "+value.categories+"</div></li>";
+
+               /* if(value.measurementtype=='blood sugar')
+                {
+                  if(value.sugervalue>value.glucoseMax)
+                  {
+                     list+="<div class='date gray font12'> Blood Gulcose : "+value.sugervalue+" "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" | Target : "+value.glucoseMin+" - "+value.glucoseMax+" | High </div></li>";
+                  }
+                  else{
+                       list+="<div class='date gray font12'> Blood Gulcose : "+value.sugervalue+" "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" | Target : "+value.glucoseMin+" - "+value.glucoseMax+"| Low </div></li>";
+                  }
+
+                  
+                }
+                else{
+
+                  if(value.pressuresystolic>value.bloodPressureMax)
+                  {
+                     list+="<div class='date gray font12'>  Blood Pressure : "+value.pressuresystolic+"-"+value.pressurediastolic+" | "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" |Target : "+value.bloodPressureMin+" - "+value.bloodPressureMax+" | High </div></li>";
+                  }
+                  else{
+                       list+="<div class='date gray font12'>  Blood Pressure : "+value.pressuresystolic+"-"+value.pressurediastolic+" | "+value.units+" | "+value.measurementtype+"| "+value.deviceTime+" |Target : "+value.bloodPressureMin+" - "+value.bloodPressureMax+"| Low </div></li>";
+                  }
+
+                  
+                }*/
+
+              
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+                 $(".patient_demographicprob").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "pateint-data-doctor.html?id="+id;
+               });
+
+              });
+
+        };
+
+         var viewPatient=function(){
+              $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/view_person_details?access_token="+$.cookie("access_token"),
+              data: "personID=patient&docID="+$.cookie("docID")
+                })
+              .done(function( msg ) {
+                console.info(msg.listentity[0]);
+                $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                }
+
+                $.each( msg.listentity, function( key, value ) {
+                  /*<button class='btn btn-success btn-xs uprCase comment_patient_doc' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>Patient Comment</button>&nbsp<button class='btn btn-success btn-xs uprCase'><span class='fa fa-file-pdf-o'></span> Export MR</button>*/
+
+                list+="<li><div class='pull-right'><div class='meta font14'> <span class='gray'></span> </div>";
+                list+="<div class='text-right'>&nbsp;<button class='btn btn-success btn-xs uprCase patient' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span> Data History</button></div></div>";
+                if(value.image==null)
+                {
+                    list+="<div class='img'><img src='resources/images/demo.png' alt=''></div>";
+                    
+                }
+                else{
+                    list+="<div class='img'><img src='"+value.image+"' alt=''></div>";
+                }
+                list+="<div class='name'><a class='black' href='pateint-data-doctor.html?id="+value.id+"'>"+value.firstname+" "+value.lastname+"</a></div>";
+
+                var val="";
+
+                if(value.categories=="Generally-Compliant")
+                {
+                    val=$.cookie('cat2');
+                }
+                else if(value.categories=="Critical")
+                {
+                  val=$.cookie('cat1');
+                }
+                else if(value.categories=="Not-Compliant")
+                {
+                  val=$.cookie('cat3');
+                }
+
+                list+="<div class='date gray font12'>"+value.email+" | "+value.date_of_birth+" | "+(( value.sex =='male') ? 'Male' : ' FeMale') +" | "+value.mr_number+" | "+val+" </div></li>";
+
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+
+                 $(".patient").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "pateint-data-doctor.html?id="+id+"&type=yes";
+                 });
+
+                 
+                })
+                .fail(function() {
+                    //alert("Error");
+                     console.info("Error");
+                });
+
+
+          };
+          
+
+         var removeClass=function(){
+            $( "#doc1" ).removeClass( "active" );
+            $( "#doc2" ).removeClass( "active" );
+            $( "#doc3" ).removeClass( "active" );
+            $( "#doc4" ).removeClass( "active" );
+            $( "#doc5" ).removeClass( "active" );
+            $( "#doc6" ).removeClass( "active" );
+           
+         };
+
+
+
+            $(".viewpatient").keyup(function(event){
+                viewSearchAssignedPatient($(".viewpatient").val());
+            });
+
+
+            var viewSearchAssignedPatient=function(patientDetails){
+              
+              $("#person_details").html("View Patient");
+
+              var searchValue = [];
+
+              $(".searchpatientvalue:checked").each(function() {
+                  searchValue.push($(this).val());
+              });
+
+              var searchStatus = [];
+
+              $(".searchpatientstatus:checked").each(function() {
+                  searchStatus.push($(this).val());
+              });
+
+              console.info(searchValue+"/"+searchStatus);
+
+              $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/view_search_person_details?access_token="+$.cookie("access_token"),
+              data: "patientDetail="+patientDetails+"&personID=assingedpatient&docID="+$.cookie("docID")+"&searchValue="+searchValue+"&searchStatus="+searchStatus
+                })
+              .done(function( msg ) {
+                
+               $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                }
+
+                $.each( msg.listentity, function( key, value ) {
+
+                list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                list+="<div class='text-right'><button class='btn btn-success btn-xs uprCase comment_patient_doc' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>Patient Comment</button>&nbsp;<button class='btn btn-success btn-xs uprCase assingpatient' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span> Data History</button>&nbsp<button class='btn btn-success btn-xs uprCase patient_demographic' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span> Patient Demographic</button></div></div>";
+                if(value.image==null)
+                {
+                    list+="<div class='img'><img src='../resources/images/demo.png' alt=''></div>";
+                    
+                }
+                else{
+                    list+="<div class='img'><img src='"+value.image+"' alt=''></div>";
+                }
+                list+="<div class='name'><a class='black' href=''>"+value.firstname+" "+value.lastname+"</a></div>";
+
+                var val="";
+
+                if(value.categories=="Generally-Compliant")
+                {
+                    val=$.cookie('cat2');
+                }
+                else if(value.categories=="Critical")
+                {
+                  val=$.cookie('cat1');
+                }
+                else if(value.categories=="Not-Compliant")
+                {
+                  val=$.cookie('cat3');
+                }
+
+                list+="<div class='date gray font12'>"+value.email+" | "+value.date_of_birth+" | "+(( value.sex =='male') ? 'Male' : ' FeMale') +" | "+value.mr_number+" | "+val+" </div></li>";
+
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+
+                 $(".assingpatient").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "pateint-data-doctor.html?id="+id;
+               });
+
+                 $(".patient_demographic").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "patient_demographic.html?id="+id;
+               });
+             
+
+              })
+              .fail(function() {
+                  //alert("Error");
+                   console.info("Error");
+              });
+
+            };
+
+            var viewSearchUnAssignedPatient=function(patientDetails){
+              
+              $("#person_details").html("View Patient");
+
+              var searchValue = [];
+
+              $(".searchpatientvalue:checked").each(function() {
+                  searchValue.push($(this).val());
+              });
+
+              var searchStatus = [];
+
+              $(".searchpatientstatus:checked").each(function() {
+                  searchStatus.push($(this).val());
+              });
+
+              console.info(searchValue+"/"+searchStatus);
+
+              $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/view_search_person_details?access_token="+$.cookie("access_token"),
+              data: "patientDetail="+patientDetails+"&personID=patient&docID="+$.cookie("docID")+"&searchValue="+searchValue+"&searchStatus="+searchStatus
+                })
+              .done(function( msg ) {
+                
+               $("#showList").empty();
+
+                var list="";
+
+                if(msg.listentity.length<=0)
+                {
+                  list="<li>No record found</li>";
+                }
+
+                $.each( msg.listentity, function( key, value ) {
+                    /*<button class='btn btn-success btn-xs uprCase comment_patient_doc' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span>Patient Comment</button>&nbsp<button class='btn btn-success btn-xs uprCase'><span class='fa fa-file-pdf-o'></span> Export MR</button>*/
+                list+="<li><div class='pull-right'><div class='meta font14'><span class='gray'></span> </div>";
+                list+="<div class='text-right'>&nbsp;<button class='btn btn-success btn-xs uprCase unassingpatient' data-id='"+value.id+"'><span class='fa fa-file-pdf-o'></span> Data History</button></div></div>";
+                if(value.image==null)
+                {
+                    list+="<div class='img'><img src='../resources/images/demo.png' alt=''></div>";
+                    
+                }
+                else{
+                    list+="<div class='img'><img src='"+value.image+"' alt=''></div>";
+                }
+                list+="<div class='name'><a class='black' href=''>"+value.firstname+" "+value.lastname+"</a></div>";
+
+
+                var val="";
+
+                if(value.categories=="Generally-Compliant")
+                {
+                    val=$.cookie('cat2');
+                }
+                else if(value.categories=="Critical")
+                {
+                  val=$.cookie('cat1');
+                }
+                else if(value.categories=="Not-Compliant")
+                {
+                  val=$.cookie('cat3');
+                }
+
+                list+="<div class='date gray font12'>"+value.email+" | "+value.date_of_birth+" | "+(( value.sex =='male') ? 'Male' : ' FeMale') +" | "+value.mr_number+" | "+val+" </div></li>";
+
+                });
+
+             //   console.info(list);
+                $("#showList").html(list);
+
+                 $(".unassingpatient").click(function(){
+
+                  var id=$(this).data('id');
+                  console.info('patient id:-'+id);
+                  window.location.href = "pateint-data-doctor.html?id="+id;
+               });
+
+             
+
+              })
+              .fail(function() {
+                  //alert("Error");
+                   console.info("Error");
+              });
+
+            };            
+
+
+            jQuery(document).ready(function () {
+                getUnReadMessageStatus("/rpms/doc/unread_message",$.cookie("docID"));
+                //hide a div after 3 seconds
+                setInterval(function(){ getUnReadMessageStatus("/rpms/doc/unread_message",$.cookie("docID")); }, 10000);
+
+                console.info("unread count:- "+unreadMessageCount);
+            });
+
+            $(".searchpatient").click(function(){
+              console.info("click check box");
+              viewSearchAssignedPatient($(".viewpatient").val());
+            });
+
+
+            var setImage=function(){
+              // Get on screen image
+              var screenImage = $("#img");
+
+              // Create new offscreen image to test
+              var theImage = new Image();
+              theImage.src = screenImage.attr("src");
+
+              // Get accurate measurements from that.
+              var width = theImage.width;
+              var height = theImage.height;
+
+              console.info(width+"/"+height);
+
+              if(width>100 || height>70)
+              {
+                screenImage.attr('height','70');
+                screenImage.attr('width','100');
+              }
+            };
+            
+            setInterval(setImage, 1000);
+</script>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

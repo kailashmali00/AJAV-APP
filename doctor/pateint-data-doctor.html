@@ -1,0 +1,3918 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>DS4U</title>
+    <!-- Google Web Font -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css'> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../resources/css/custom-theme.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <link href="css/ie8.css" rel="stylesheet">
+    <![endif]-->
+     <!--[if lt IE 8]>
+      <link href="css/ie7.css" rel="stylesheet">
+    <![endif]-->
+
+    <script>
+        var currentD = new Date();
+        var lastD = new Date();
+
+        var month = new Date();
+    </script>
+
+  </head>
+
+  <body class="admin-page nurse-admin">
+
+    <div class="container-fluid wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo"><a href="doctor-dashboard.html">RPMS</a></h1>
+            <!-- <div class="main-menu dropdown">
+              <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="fa fa-bars"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="">Menu Item1</a></li>
+                <li><a href="">Menu Item2</a></li>
+                <li><a href="">Menu Item3</a></li>
+                <li><a href="">Menu Item4</a></li>
+              </ul>
+            </div> -->
+
+            <div class="user-nav">
+                <div class="dropdown visible-xs">
+                  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                    <img  src="../resources/images/demo.png" alt="">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <!-- <li><a href="" title="Notifications"><span class="fa fa-bell"></span> Notifications</a></li> -->
+                    <li><a href="" title="Messages"><span class="fa fa-envelope"></span> Messages</a></li>
+                    <!-- <li><a href="" title="My Account"><span class="fa fa-cog"></span> My Account</a></li> -->
+                    <li><a href="" title="Logout"><span class="fa fa-power-off"></span> Logout</a></li>
+                  </ul>
+                </div>
+                <div class="row hidden-xs">
+                    <div class="col-xs-4">
+                        <div class="img"><img id="img" src="../resources/images/demo.png" alt=""></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="user-name"><span class="blue">Hi</span><span id="user"></span></div>
+                        <ul class="list-inline">
+                            <!-- <li><a href="" title="Notifications"><span class="fa fa-bell"></span></a></li> -->
+                            <!-- <li><a href="" title="Messages"><span class="fa fa-envelope"></span></a><sup id="message" style="color:white; font-size:14px;"></sup></li> -->
+                            <li class="dropdown"><a data-toggle="dropdown" href="" title="Messages"><span class="fa fa-envelope"></span></a><sup id="message" style="color:white; font-size:14px;"></sup>
+                              <ul id="notification" class="dropdown-menu dropdown-menu-right" role="menu">
+
+                              </ul>
+                            </li>
+                            <!-- <li><a href="" title="My Account"><span class="fa fa-cog"></span></a></li> -->
+                            <li><a href="../login.html" title="Logout"><span class="fa fa-power-off"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </header>
+
+        <!-- Container -->
+        <div class="main-container">
+            <!-- <ol class="breadcrumb font12 mybread">
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Assigned Patients</a></li>
+              <li class="active">John Doe</li>
+            </ol> -->
+            <div class="pateint-head row">
+                <div class="col-md-4">
+                    <div class="pateint-info row">
+                        <div class="col-md-4 col-sm-2 col-xs-4">
+                            <div class="img"><img id="patient_img" width="100%" src="../resources/images/demo.png" alt=""></div>
+                        </div>
+                        <div class="col-md-8 col-sm-10 col-xs-8">
+                            <h2 class="green font24" style="width:200%"><spam id='patient_name'></spam><span id='patient_date' class="black font14"></span></h2>
+                            <div id='patient_dob' class="black font12" style="margin-top:10px;"></div>
+                            <p class="font12"><spam id='patient_gender'style="text-transform:capitalize;"> </spam><span class="gray" > | </span> <spam id='patient_age'></spam></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="pateint-actions">
+                        <ul>
+                        <li class="text-center mydrop1">
+                                <a href="#" class="fa-graph1  ">
+                                    <span class="fa black "></span>
+                                    <span class="link">Grid View</span>
+                                    <span class="font12 black">Data Point</span>
+                                </a>
+                                <ul class="mydrop" >
+    <li><a href="javascript:void(0)" id="grid_glucose">Glucose</a></li>
+    <li><a href="javascript:void(0)" id="grid_pressure">Blood Pressure</a></li>
+  </ul>
+                            </li>
+                            <li class="text-center  mydrop1">
+                                <a href="#" class="fa-graph  ">
+                                    <span class="fa black "></span>
+                                    <span class="link">Graph View</span>
+                                    <span class="font12 black">Data Point</span>
+                                </a>
+                                <ul class="mydrop" >
+    <li><a href="javascript:void(0)" id="graph_glucose">Glucose</a></li>
+    <li><a href="javascript:void(0)" id="graph_pressure">Blood Pressure</a></li>
+  </ul>
+                            </li>
+                              <!--  <li class="text-center mydrop1">
+                                <a href="#">
+                                    <span class="fa black fa-cloud-upload"></span>
+                                    <span class="link">Save record</span>
+                                    <span class="font12 black">of this Patient</span>
+                                </a>
+                                <ul class="mydrop" >
+    <li><a href="">Save</a></li>
+    <li><a href="">Save & Exit</a></li>
+    <li><a href="">Exit Without Save</a></li>
+  </ul>
+                            </li> -->
+                      <li class="text-center " id="msgToPatient">
+                                <a href="javascript:void(0)" id="messageToPatient">
+                                    <span class="fa black fa-envelope"></span>
+                                    <span class="link">Send message</span>
+                                    <span class="font12 black">to this Patient</span>
+                                </a>
+
+                            </li>
+                            <!-- <li class="text-center">
+                                <a href="javascript:void(0)" id="commentForPatient">
+                                    <span class="fa black fa-comment"></span>
+                                    <span class="link">Write a comment</span>
+                                    <span class="font12 black">about this Patient</span>
+                                </a>
+                            </li> -->
+
+                         <li class="text-center" id="msgToNurse">
+                                <a href="javascript:void(0)" id="messageForPatient">
+                                    <span class="fa black fa-envelope"></span>
+                                    <span class="link">Send a message</span>
+                                    <span class="font12 black">about this Patient to Nurse</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<div class="data-graph-block" id="graph_block">
+       
+      <div class="row">
+        <div class="col-md-9">
+
+            <div class="patient-data-graph">
+                <div class="graph-head">
+                    <div class="pull-left">
+                        <h3><span class="green" id="graph_name">Glucose</span> Physiological Data Points</h3>
+                        <button id="refresh" class="btn btn-sm uprCase btn-default"><span class="fa fa-refresh"></span> Refresh data</button>
+                    </div>
+                    <div class="pull-right" id="data_in_pdf">
+                        <ul class="list-inline">
+                            <!-- <li><button class="btn btn-sm uprCase btn-default">Show Legend</button></li> -->
+                            <li id="week" class="active">
+                                <div class="btn-group" role="group" aria-label="...">
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="last7days_left"><span class="fa fa-caret-left"></span></button>
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="last7days">This Week</button>
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="last7days_right"><span class="fa fa-caret-right"></span></button>
+                                </div>
+                            </li>
+                            <li id="month">
+                                <div class="btn-group" role="group" aria-label="...">
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="lastmonth_left"><span class="fa fa-caret-left"></span></button>
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="lastmonth">This Month</button>
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="lastmonth_right"><span class="fa fa-caret-right"></span></button>
+                                </div>
+                            </li>
+                          <!--   <li >
+                                <div class="btn-group" role="group" aria-label="...">
+                                  
+                                  <button type="button" class="btn btn-sm uprCase btn-default" id="PDF">PDF</button>
+                                  
+                                </div>
+                            </li>    -->
+                        </ul>
+
+                    </div>
+
+                    
+                    <div class="clr"></div>
+                </div>
+                <!-- <div id='time' ><h3><spam id='graph_time' class="font16"></spam></h3></div> -->
+                <div class="graph-block">
+                    <div class="graph-object" id="chartContainer"></div>
+                </div>
+            </div>
+             <div class="canvastext"><span ><font color="#FA5882">Red: High Points and Low Points </font></span>| <span class="green">Green: Normal Points</span></div>
+             <div style="margin-top:-10px;"><img src="../resources/images/canvasShapes.jpg" height="45" width="" ></div>  
+
+        </div>
+        <div class="col-md-3">
+            <div class="graph-guide">
+                <div class="target-zone" id="target_zone">Target Zone Glucose : 0-0</div>
+                <div class="target-zone" id="target_zone_diastolic">Target Zone Diastolic: 0</div>
+                <div class="target-zone" id="target_zone_systolic">Target Zone Systolic: 0</div>
+
+                <div class="row avg-statistics text-center" id="sugerdata">
+                 <div class="col-md-4" >
+                            <div>MAX</div>
+                            <div id="max_value" class="font18">0</div>
+                            <div id="max_unit" class="font12 gray">mg/dL</div>
+                              
+                    </div>
+                    <div class="col-md-4" >
+                        <div>AVG</div>
+                        <div id="avg_value" class="font18">0</div>
+                        <div id="avg_unit" class="font12 gray">mg/dL</div>
+                         
+                         
+                    </div>
+                      <div class="col-md-4" >
+                        <div>MIN</div>
+                        <div id="min_value" class="font18">0</div>
+                        <div id="min_unit" class="font12 gray">mg/dL</div>
+                          
+                        
+                    </div>
+                </div>    
+
+                <div class="row avg-statistics text-center" id="rowdiastolic">
+                       <div class="col-md-4">
+                         <div>DIASTOLIC</div>
+                        </div>
+                </div>
+                <br>
+                <div class="row avg-statistics text-center" id="diastolicdata">
+                      
+                    <div class="col-md-4" id="maxdiastolic">   
+                                <div>MAX</div>
+                                <div id="max_value_diastolic" class="font18">0</div>
+                                <div id="max_unit_diastolic" class="font12 gray">mg/dL</div>
+                    </div>
+                  
+                    
+                    <div class="col-md-4" id="avgdiastolic">
+                            <div>AVG</div>
+                            <div id="avg_value_diastolic" class="font18">0</div>
+                            <div id="avg_unit_diastolic" class="font12 gray">mg/dL</div>
+                    </div>
+                  
+                       <div class="col-md-4" id="mindiastolic">
+                                <div>MIN</div>
+                                <div id="min_value_diastolic" class="font18">0</div>
+                                <div id="min_unit_diastolic" class="font12 gray">mg/dL</div>
+                    </div>
+                       
+                </div>
+                <br>
+                <div class="row avg-statistics text-center" id="rowsystolic">
+                            <div class="col-md-4">
+                            <div>SYSTOLIC</div>
+                            </div>
+                </div><br>
+                  <div class="row avg-statistics text-center" id="systolicdata">
+                    <div class="col-md-4" id="maxsystolic">   
+                                <div>MAX</div>
+                                <div id="max_value_systolic" class="font18">0</div>
+                                <div id="max_unit_systolic" class="font12 gray">mg/dL</div>
+                    </div>
+                    <div class="col-md-4" id="avgsystolic">
+                            <div>AVG</div>
+                            <div id="avg_value_systolic" class="font18">0</div>
+                            <div id="avg_unit_systolic" class="font12 gray">mg/dL</div>
+                    </div>
+                  
+                       <div class="col-md-4" id="minsystolic">
+                                <div>MIN</div>
+                                <div id="min_value_systolic" class="font18">0</div>
+                                <div id="min_unit_systolic" class="font12 gray">mg/dL</div>
+                    </div>
+                </div>
+                <div class="avg-graph">
+                     <div style="height:200px;margin-left: 50px;" class="graph-block" id="pieBlock"><div class="graph-object" id="chartContainerP"></div></div>
+                </div>
+                <div class="graph-selected-number">
+                    <button class="left-arrow" id="left_data_point" ><span class="fa fa-caret-left"></span></button>
+                    <button class="right-arrow" id="right_data_point"><span class="fa fa-caret-right"></span></button>
+                    <!-- <div class="text-center">GEN <img src="../resources/images/sign1.png" alt=""> <img src="../resources/images/sign2.png" alt=""></div> -->
+                    <div class="text-center font16 blue" id="data_unit" >00 mg/dL</div>
+                    <div class="date-time text-center gray" id="date_time">00:00<br>00/00/0000</div>
+                </div>
+                <div class="col-md-12 commentbox" id="commentbox" >
+                    <ul id="show_comment">
+                        <li class="green"></li>
+                        <!--<li class="blue">message is here</li>
+                        <li class="yellowgreen">message is here</li>
+                        <li class="blue">message is here</li>
+                        <li class="yellowgreen">message is here</li>
+                        <li class="yellowgreen">message is here</li>
+                        <li class="blue">message is here</li>
+                        <li class="yellowgreen">message is here</li>
+                        <li class="blue">message is here</li>
+                        <li class="yellowgreen">message is here</li> -->
+                    </ul> 
+
+                </div>
+                <div class="form-area form-horizontal" id="writeComment">
+                    <div class="form-group">
+                        <div class="col-md-12"><textarea class="form-control" id="comment" placeholder="Your comment in this data point here..."></textarea></div>
+                    </div>
+                    <div class="form-action">
+                    <button id="submit_comment" class="btn btn-default btn-sm uprCase mar_right10">Submit</button>
+                  <!--   <button id="submit_review" class="btn btn-primary btn-sm uprCase mar_right10">Review</button>
+                     <button id="submit_delete" class="btn btn-danger btn-sm uprCase">Delete</button> -->
+                       <!-- <button id="read_comment" class="btn btn-default btn-sm uprCase" style="margin-left:117px;">Read Comment</button> -->
+                    </div> 
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+            <div class="block-bdr" id="grid_block" style='display:none;'>
+                <h2 class="title font18 blue uprCase" id="grid_name">
+Glucose Physiological Data Points</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Data Type</th>
+                                <th>Data Value</th>
+                                <th>Status</th>
+                                <th id="setTarget">Target</th>
+                                <th>Reviewed</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patient_data">
+                            <!-- <tr>
+                                <td>02/12/2014</td>
+                                <td>Blood Pressure</td>
+                                <td><span class="label label-success">86</span></td>
+                                <td><span class="label label-success">Normal</span></td>
+                                <td>80-100</td>
+                                <td><a href="">Dr. Amaya Johnes</a></td>
+                                <td><div class="switch switch-off">No</div></td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li><a class="black" href=""><span class="fa fa-eye"></span></a></li>
+                                        <li><a class="black" href=""><span class="fa fa-comment"></span></a></li>
+                                        <li><a class="black" href=""><span class="fa fa-check"></span></a></li>
+                                        <li><a class="black" href=""><span class="fa fa-close"></span></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+ -->
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p class="font12 text-center">&copy; Copyright 2014 Remote Patient Monitoring System. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/docs.min.js"></script>
+    <script src="../resources/js/public.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../resources/js/rpms/main.js"></script>
+    <script type="text/javascript" src="../resources/js/jquery.canvasjs.min.js"></script>
+
+    <script type="text/javascript" src="../resources/js/jspdf.js"></script>
+    <script type="text/javascript" src="../resources/js/libs/Deflate/adler32cs.js"></script>
+    <script type="text/javascript" src="../resources/js/libs/FileSaver.js/FileSaver.js"></script>
+    <script type="text/javascript" src="../resources/js/libs/Blob.js/BlobBuilder.js"></script>
+    <script type="text/javascript" src="../resources/js/jspdf.plugin.addimage.js"></script>
+    <script type="text/javascript" src="../resources/js/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="../resources/js/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="../resources/js/jspdf.plugin.from_html.js"></script> 
+    <script type="text/javascript" src="../resources/js/base64.js"></script>
+    <script type="text/javascript" src="../resources/js/jspdf.plugin.autotable.js"></script>
+    <!--  <script type="text/javascript" src="../resources/js/jspdf.debug.js"></script> -->
+
+     <script type="text/javascript">
+
+
+        // var getData=JSON.stringify(graphPoints);
+
+        // console.info(getData);
+        /*var patientfirst;*/
+        var lows=0,highs=0,normals=0;
+        var low=0,high=0,normal=0;
+        var PTtitle="";
+        var lowDate = new Date();
+        var highDate = new Date();
+        var imon=0;
+
+        var d = new Date();
+        var n = d.getMonth();
+
+        var selectedMonthFirstDate = new Date();
+        var selectedMonthLastDate = new Date();
+        var getimage;
+        var getdatatable;
+        var dateFormat="";
+          var getDateFormat="";
+           var setDateFormat="";
+        var startLine = 80;
+        var endLine = 120;
+        var getDataCommentRow;
+
+        var getMonthDate = function(cm){
+           //alert(cm);
+           selectedMonthFirstDate = new Date(cm.getFullYear(),cm.getMonth(),01);
+            selectedMonthLastDate = new Date(cm.getFullYear(),cm.getMonth()+1,01);
+           // alert(selectedMonthFirstDate+" <> "+selectedMonthLastDate);
+        }
+
+         var resetWeekMonth= function(){
+          wk=0;
+          mon=0;
+          if(wk==0 && mon==0){
+             $("#last7days").html("This Week");
+             $("#lastmonth").html("This month");
+          }
+        }
+
+
+ var dayCount=1;
+        var oldDate="";
+        var dateCompare=function(cd){
+           // alert(oldDate+"/"+cd);
+             if(oldDate==cd){
+                dayCount++;
+             }
+             else{
+                    dayCount=1;
+                    oldDate=cd;
+             }
+             //alert(dayCount);
+             return dayCount;
+        }
+        var getTargetForSugarGraph = function(cm){
+            if($.cookie("targetValueForSugar")!=null){
+                 var Range=$.cookie("targetValueForSugar");
+                 var targetRange=Range.split("-");
+                 var minvalue=targetRange[0];
+                 var maxvalue=targetRange[1];
+                if(cm==0){
+                         return parseInt(minvalue);
+                 }
+                 else{
+                         return parseInt(maxvalue);
+                 }
+            }
+            else{
+                $.cookie("targetValueForSugar",0+"-"+0);
+                var Range=$.cookie("targetValueForSugar");
+                 var targetRange=Range.split("-");
+                 var minvalue=targetRange[0];
+                 var maxvalue=targetRange[1];
+                if(cm==0){
+                         return parseInt(minvalue);
+                 }
+                 else{
+                         return parseInt(maxvalue);
+                 }
+            }
+           
+        }
+
+        var getTargetForPressureGraph = function(cm){
+            if($.cookie("targetValueForPressure")!=null){
+                 var Range=$.cookie("targetValueForPressure");
+                 var targetRange=Range.split("/");
+                 var minvalue=targetRange[0];
+                 var maxvalue=targetRange[1];
+                if(cm==0){
+                         return parseInt(minvalue);
+                 }
+                 else{
+                         return parseInt(maxvalue);
+                 }
+            }
+            else{
+                $.cookie("targetValueForPressure",0+"-"+0);
+                var Range=$.cookie("targetValueForPressure");
+                 var targetRange=Range.split("-");
+                 var minvalue=targetRange[0];
+                 var maxvalue=targetRange[1];
+                if(cm==0){
+                         return parseInt(minvalue);
+                 }
+                 else{
+                         return parseInt(maxvalue);
+                 }
+            }
+           
+
+
+        }
+   
+               
+
+
+       // getMonthDate(selectedMonthFirstDate);
+      var chartFunction= function (getData,titleDate) {
+  $("#graph_glucose").addClass("active");
+ var  title;
+             if($("#graph_pressure").hasClass("active")){
+              
+                title="Pressure Data Points";
+            }
+            else{
+                  
+              title="Glucose Data Points";
+            }
+      // alert(getData);
+        var gps=getData;
+
+        //alert(gps);
+        console.info(gps);
+
+      //alert(setDateFormat)
+
+        var chart = new CanvasJS.Chart("chartContainer",
+        {
+            
+        
+          title:{
+           text: title,
+           fontSize: 16,
+           fontColor: "#ffffff",
+           fontFamily: "arial",
+         },
+          toolTip:{
+                shared:true,
+                enabled:true,
+                },
+         //exportEnabled: true,
+         theme: "theme2",
+         animationEnabled: true,
+         animationDuration: 3000,
+         width:1000,
+         height:500,
+         backgroundColor:"#156bbb",
+
+
+
+         axisX: {
+                
+
+           valueFormatString:$.cookie("dateFormat"),
+           titleFontSize: 10,
+           labelFontSize: 12,
+           labelFontColor: "#ffffff",
+           labelFontFamily:"arial",
+           labelAngle: -60,
+            lineColor: "#ffffff",
+            lineThickness: 1,
+            gridDashType: "dash",
+            gridThickness:1.5,
+            gridColor: "#ffffff",
+            
+          },
+          axisY:{
+            
+            gridThickness:0.5,
+             lineColor: "#ffffff",
+            lineThickness: 1,
+             labelFontSize: 12,
+           labelFontColor: "#ffffff",
+           labelFontFamily:"arial",
+
+            gridColor: "#ffffff",
+
+            stripLines: [
+            {
+                value: getTargetForSugarGraph(0),
+                lineDashType: "dash",
+                color:"red",
+                thickness:3,
+                
+                
+                
+            },
+              {
+                value: getTargetForSugarGraph(1),
+                lineDashType: "dash",
+                color:"red",
+                thickness:3,
+                
+                
+            }
+            ],
+
+            valueFormatString: "#"
+          },
+           legend: {
+                      fontColor: "#ffffff",
+                      fontFamily:"arial",
+
+                  },
+         data: [
+         {
+          type: "line",
+          showInLegend: true,
+           
+         legendText:title,
+           dataPoints : gps,
+           color: "yellowgreen",
+          
+           
+             
+        }
+
+        ]
+      });
+
+    chart.render();
+     
+    };
+
+var chartFunctionb= function (getData,getData2,titleDate) {
+    var title;   
+        var gps=getData;
+        //alert(gps);
+        console.info(gps);
+       
+
+         title=titleDate;
+        
+        var chart = new CanvasJS.Chart("chartContainer",
+        {
+          title:{
+           text: title,
+           fontSize: 16,
+           fontColor: "#ffffff",
+           fontFamily: "arial",
+         },                        
+        toolTip:{
+                shared:true,
+                reversed: true,
+                },
+         //exportEnabled: true,
+         theme: "theme2",
+         animationEnabled: true,
+         animationDuration: 3000,
+         width:1000,
+         height:500,
+         backgroundColor:"#156bbb",
+
+         axisX: {
+                   
+           valueFormatString: $.cookie("dateFormat"),
+           titleFontSize: 10,
+            labelFontSize: 12,
+           labelFontColor: "#ffffff",
+           labelFontFamily:"arial",
+           labelAngle: -60,
+            lineColor: "#ffffff",
+            lineThickness: 1,
+            gridDashType: "dash",
+            gridThickness:1.5,
+            gridColor: "#ffffff",
+
+          },
+          axisY:{
+            
+            gridThickness:0.5,
+            lineThickness: 1,
+             labelFontSize: 12,
+           labelFontColor: "#ffffff",
+           labelFontFamily:"arial",
+
+            gridColor: "#ffffff",
+
+
+            stripLines: [
+            {
+                value: getTargetForPressureGraph(0),
+                lineDashType: "dash",
+                color:"black",
+                thickness:3,
+                
+                
+                
+            },
+              {
+                value: getTargetForPressureGraph(1),
+                lineDashType: "dash",
+                color:"red",
+                thickness:3,
+                
+                
+            }
+            ],
+
+            valueFormatString: "#"
+          },
+          legend: {
+                      fontColor: "#ffffff",
+                      fontFamily:"arial",
+
+                  },
+         data: [
+         {
+          type: "line",
+          showInLegend: true,
+          legendText:"Diastolic ",
+           dataPoints : getData,
+            color: "yellowgreen",
+             
+        },
+        {
+          type: "line",
+          showInLegend: true,
+        legendText:"Systolic ",
+           dataPoints : getData2,
+            color: "orange",
+        }
+        ]
+      });
+
+    chart.render();
+    };
+
+        // var getData=JSON.stringify(graphPoints);
+
+        // console.info(getData);
+
+       // chartFunctionPie(low,high,normal,PTtitle);
+
+              //      chartFunctionHistogram(low,high,normal,HTtitle);
+
+      var chartFunctionPie= function (low,high,normal,PTtitle) {
+       
+        var Plow=low;
+        var Phigh=high;
+        var Pnormal=normal;
+        
+       
+
+        var title=PTtitle;
+
+        var chart = new CanvasJS.Chart("chartContainerP",
+    {
+    
+                animationEnabled: true, 
+                width:220,
+                height:180,    
+                   backgroundColor:"#03325e",
+        legend: {
+                     maxWidth: 220,
+                     itemWidth: 60,
+                     fontColor:"#ffffff",
+                     fontSize:14,
+
+            
+        },
+        data: [
+        {        
+            type: "doughnut",
+            startAngle: 60,                          
+            toolTipContent: "{legendText}: {y} - <strong>#percent% </strong>",                  
+            showInLegend: true,
+            dataPoints: [
+              {y: Pnormal,  legendText: "  Normal", color:"#156bbb"},
+              {y: Phigh,  legendText: "  Above",color:"red" },
+              {y: Plow,  legendText: "  Below",color:"#4bb622" }          
+            ]
+
+        }
+        ]
+        
+    });
+
+    chart.render();
+    };
+</script>
+
+    <script >
+           var patientID;
+           var patientDataPointId;
+
+           var dataPointId;
+           var mr_number;
+           var gettype="";
+           var datatype='blood sugar';
+         
+           var graphPoints = [];
+           var graphPointsD = [];
+           var getDataPointsFromGraph=[];
+
+         /*  var columns = [ {title: "Date", key: "date"},{title:"Data value",key:"datavalue"},{title:"Data Unit",key:"dataunit"}];*/
+           /*var data=[];*/
+          
+           var patientlast="";
+           var titleDate="Glucose Data Points";
+
+          // var data_point_id=0;
+
+            checkAccessToken();
+
+            username=$.cookie("username");
+            access_token=$.cookie("access_token");
+            userUniqueID=$.cookie("userUniqueID");
+          
+            id=$.cookie("docID");
+    
+            $("#user").html(", "+$.cookie("name"));
+            $("#img").attr("src",$.cookie("image_url"));
+
+            console.info(username+"/"+access_token+"/"+userUniqueID+"/"+id);
+
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            var i = 0;
+            for (i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == "id") {
+                    patientID = sParameterName[1];
+                }
+                 if(sParameterName[0]=='type'){
+                    gettype=sParameterName[1];
+                  }
+                /*  if(sParameterName[0]=='dateFormat'){
+
+                      getDateFormat=sParameterName[1];
+                  }*/
+            }
+
+            
+/*function toCamelCase(s) {
+    // remove all characters that should not be in a variable name
+    // as well underscores an numbers from the beginning of the string
+    s = s.replace(/([^a-zA-Z0-9_\- ])|^[_0-9]+/g, "").trim().toLowerCase();
+    // uppercase letters preceeded by a hyphen or a space
+    s = s.replace(/([ -]+)([a-zA-Z0-9])/g, function(a,b,c) {
+        return c.toUpperCase();
+    });
+    // uppercase letters following numbers
+    s = s.replace(/([0-9]+)([a-zA-Z])/g, function(a,b,c) {
+        return b + c.toUpperCase();
+    });
+    return s;
+}*/
+
+        
+                if(gettype=="yes"){
+
+                    $("#msgToPatient").hide();
+                    $("#msgToNurse").hide();
+                }
+                else
+                {
+                    $("#msgToPatient").show();
+                    $("#msgToNurse").show();
+                }
+
+    var v1,v2,v3,v4,v5;
+    var getAge=function(dateString) {
+            
+            var now = new Date();
+            var today = new Date(now.getYear(),now.getMonth(),now.getDate());
+
+            var yearNow = now.getFullYear();
+            var monthNow = now.getMonth()+1;
+            var dateNow = now.getDate();
+           /*alert(dateString);
+          var dob = new Date(dateString.substring(6,10),
+                     dateString.substring(0,2)-1,                   
+                     dateString.substring(3,5)                  
+                     );*/
+            var   dob=dateString.split("-");
+
+  var yearDob = dob[0];
+  var monthDob = dob[1];
+  var dateDob = dob[2];
+  var age = {};
+  var ageString = "";
+  var yearString = "";
+  var monthString = "";
+  var dayString = "";
+
+
+  yearAge = yearNow - yearDob;
+
+  if (monthNow >= monthDob)
+    var monthAge = monthNow - monthDob;
+  else {
+    yearAge--;
+    var monthAge = 12 + monthNow -monthDob;
+  }
+
+  if (dateNow >= dateDob)
+    var dateAge = dateNow - dateDob;
+  else {
+    monthAge--;
+    var dateAge = 31 + dateNow - dateDob;
+
+    if (monthAge < 0) {
+      monthAge = 11;
+      yearAge--;
+    }
+  }
+
+  age = {
+      years: yearAge,
+      months: monthAge,
+      days: dateAge
+      };
+     
+  if ( age.years > 1 ) yearString = " years";
+  else yearString = " year";
+  if ( age.months> 1 ) monthString = " months";
+  else monthString = " month";
+  if ( age.days > 1 ) dayString = " days";
+  else dayString = " day";
+
+
+  if ( (age.years > 0) && (age.months > 0) && (age.days > 0) )
+    ageString = age.years + yearString + ", " + age.months + monthString + ", and " + age.days + dayString + " old.";
+  else if ( (age.years == 0) && (age.months == 0) && (age.days > 0) )
+    ageString = "Only " + age.days + dayString + " old!";
+  else if ( (age.years > 0) && (age.months == 0) && (age.days == 0) )
+    ageString = age.years + yearString + " old. Happy Birthday!!";
+  else if ( (age.years > 0) && (age.months > 0) && (age.days == 0) )
+    ageString = age.years + yearString + " and " + age.months + monthString + " old.";
+  else if ( (age.years == 0) && (age.months > 0) && (age.days > 0) )
+    ageString = age.months + monthString + " and " + age.days + dayString + " old.";
+  else if ( (age.years > 0) && (age.months == 0) && (age.days > 0) )
+    ageString = age.years + yearString + " and " + age.days + dayString + " old.";
+  else if ( (age.years == 0) && (age.months > 0) && (age.days == 0) )
+    ageString = age.months + monthString + " old.";
+  else ageString = "Oops! Could not calculate age!";
+
+  return ageString;
+}
+
+
+
+            var setDate=function(){
+
+                 v1=new Date();
+                v1.setFullYear(1970);
+                v1.setMonth(01);
+                v1.setDate(01);
+                v1.setHours(00);
+                v1.setMinutes(00); 
+                v1.setSeconds(00);
+
+             v2=new Date();
+            v2.setFullYear(1970);
+            v2.setMonth(01);
+            v2.setDate(01);
+            v2.setHours(09);
+            v2.setMinutes(00); 
+            v2.setSeconds(00);
+
+
+             v3=new Date();
+            v3.setFullYear(1970);
+            v3.setMonth(01);
+            v3.setDate(01);
+            v3.setHours(13);
+            v3.setMinutes(00); 
+            v3.setSeconds(00);
+
+             v4=new Date();
+            v4.setFullYear(1970);
+            v4.setMonth(01);
+            v4.setDate(01);
+            v4.setHours(17);
+            v4.setMinutes(00); 
+            v4.setSeconds(00);
+
+             v5=new Date();
+            v5.setFullYear(1970);
+            v5.setMonth(01);
+            v5.setDate(01);
+            v5.setHours(23);
+            v5.setMinutes(59); 
+            v5.setSeconds(59);
+
+
+
+
+            };
+            setDate();
+
+                   
+            var getPatient=function(){
+
+               
+
+                $.ajax({
+                      type: "POST",
+                      url: basicUrl+"/rpms/doc/get_patient?access_token="+$.cookie("access_token"),
+                      data: "id="+patientID
+                    })
+                  .done(function( msg ) {
+                   // console.info(msg);
+                   if(msg.object!=null){
+                   // alert(msg.object)
+                     var targetsugermin=msg.object.bloodsugur.split(".");
+                     var targetsugermax=msg.object.bloodsugurMax.split(".");
+                     var targetpressuremin=msg.object.bloodPresure.split(".");
+                     var targetpressuremax=msg.object.bloodPresureMax.split(".");
+                    $.cookie("targetValueForSugar",targetsugermin[0]+"-"+targetsugermax[0]);
+                    $.cookie("targetValueForSugarMin",targetsugermin[0]);
+                    $.cookie("targetValueForSugarMax",targetsugermax[0]);
+                    $.cookie("targetValueForPressure",targetpressuremin[0]+"/"+targetpressuremax[0]);
+                    $.cookie("targetValueForDiastolic",targetpressuremin[0]);
+                    $.cookie("targetValueForSystolic",targetpressuremax[0]);
+                    $.cookie("patientfirst",msg.object.firstname+" "+msg.object.lastname);
+                      $.cookie("patientphone",msg.object.cellphone);
+                      $.cookie("patientdob","Born on "+msg.object.date_of_birth);
+                      $.cookie("patientgender",msg.object.sex);
+                      $.cookie("patientMrId",msg.object.mr_number);
+                  }
+                    var patient=msg.object;
+                   
+                      
+
+                       
+                 
+                    $("#patient_name").html(patient.firstname+" "+patient.lastname);
+                    $("#patient_date").html("&nbsp;"+patient.cellphone );
+                    $("#patient_dob").html("Born on "+patient.date_of_birth);
+
+                    $("#patient_gender").html(patient.sex);
+
+                    if(patient.date_of_birth!=null)
+                    {
+                        var date=patient.date_of_birth.split('-');
+
+                        var d=date[2]+"-"+date[0]+"-"+date[1];
+                       // console.info("date is:- "+d);
+                      //  var dob = new Date(d);
+                       // var today = new Date();
+                        //alert(today-dob);
+                        //var age =(today-dob) / (365.25 * 24 * 60 * 60 * 1000);
+                        var age = getAge(d);
+
+
+                        $("#patient_age").html(age);
+                    }
+                    else{
+                         $("#patient_age").html("0 Years");
+                    }
+
+
+                 getimage= $("#patient_img").attr("src",patient.image);
+
+                    mr_number=patient.mr_number;
+                    
+
+                  })
+                  .fail(function() {
+                      //login();
+                  });
+            };
+            getPatient();
+
+                   
+
+                       var getPatientData=function(hdate,ldate,status){
+                   
+                          $("#data_unit").html("");
+                       $("#max_value").html("");
+                         $("#max_unit").html("");
+                         $("#min_value").html("");
+                         $("#min_unit").html("");
+
+                         $("#target_zone").html("Target Zone Glucose :  "+$.cookie("targetValueForSugarMin")+"-"+$.cookie("targetValueForSugarMax"));
+                          $("#avg_value").html("");
+                          $("#avg_unit").html("");
+                           $("#date_time").html("");
+
+
+                        $("#data_unit_diastolic").html("");
+                        $("#max_value_diastolic").html("");
+                         $("#max_unit_diastolic").html("");
+                         $("#min_value_diastolic").html("");
+                         $("#min_unit_diastolic").html("");
+                         $("#target_zone_diastolic").html("Target Zone Diastolic : "+$.cookie("targetValueForDiastolic"));
+                          $("#avg_value_diastolic").html("");
+                          $("#avg_unit_diastolic").html("");
+                           $("#date_time_diastolic").html("");
+
+
+                           $("#data_unit_systolic").html("");
+                       $("#max_value_systolic").html("");
+                         $("#max_unit_systolic").html("");
+                         $("#min_value_systolic").html("");
+                         $("#min_unit_systolic").html("");
+                         $("#target_zone_systolic").html("Target Zone Systolic : "+$.cookie("targetValueForSystolic"));
+                          $("#avg_value_systolic").html("");
+                          $("#avg_unit_systolic").html("");
+                           $("#date_time_systolic").html("");
+
+
+                           if(datatype=="blood sugar")
+                            {
+
+
+                                $("#pieBlock").show(); 
+                                 $("#sugerdata").show();
+                                $("#rowdiastolic").hide();
+                                $("#rowsystolic").hide();
+                                $("#diastolicdata").hide();
+                                $("#systolicdata").hide();
+                                $("#target_zone").show();      
+                              $("#target_zone_diastolic").hide();
+                                $("#target_zone_systolic").hide();
+                             }
+                            else{
+
+                                $("#pieBlock").hide(); 
+                                $("#sugerdata").hide();
+                                 $("#rowdiastolic").show();
+                                $("#rowsystolic").show();
+                                $("#diastolicdata").show();
+                                $("#systolicdata").show();
+                                 $("#target_zone").hide(); 
+                                  $("#target_zone_diastolic").show();
+                                $("#target_zone_systolic").show();
+                                   $("#target_zone_diastolic").html("Target Zone Diastolic : "+$.cookie("targetValueForDiastolic"));
+                                  $("#target_zone_systolic").html("Target Zone Systolic : "+$.cookie("targetValueForSystolic"));
+                            }
+
+
+                            $("#graph_glucose").addClass("active");
+
+                $.ajax({
+                      type: "POST",
+                       url: basicUrl+"/rpms/doc/getpatientdata_withtime?access_token="+$.cookie("access_token"),
+                       data: "patientID="+patientID+"&datatype="+datatype+"&current="+hdate.getTime()+"&last="+ldate.getTime()+"&status="+status
+                      // url: basicUrl+"/rpms/doc/getpatientdata?access_token="+$.cookie("access_token"),
+                      // data: "patientID="+patientID+"&datatype="+datatype
+                    })
+                  .done(function( msg ) {
+                  //  console.info(msg);
+                    graphPoints.length=0;
+                    graphPointsD.length=0;   
+                    lows=0;highs=0;normals=0; 
+                    
+                    if(msg.listentity.length==0){   
+
+                     // $("#sugerdata").show();
+                     //            $("#rowdiastolic").hide();
+                     //            $("#rowsystolic").hide();
+                     //            $("#diastolicdata").hide();
+                     //            $("#systolicdata").hide();
+                     //            $("#target_zone").show();      
+                     //          $("#target_zone_diastolic").hide();
+                     //            $("#target_zone_systolic").hide();   
+                     //            $("#pieBlock").hide();                
+                    graphPoints.push({x:lowDate,y:null});
+                      //graphPointsD.push({x:lowDate,y:null});
+                    chartFunction(graphPoints,titleDate);
+                    //chartFunctionPie(low,high,normal,PTtitle);
+                    //chartFunctionb(graphPointsD,titleDate);
+                   // $(graphPoints).empty();
+
+                 }
+
+
+                    if(msg.listentity.length>0)
+                    {
+                             $.each(msg.listentity,function(index,value){
+
+                        getDataPointsFromGraph.push(value);
+                    });
+                        
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood sugar");
+                        var arrayList=[];    
+                        var arrayListDiastolic=[];
+                        var arrayListSystolic=[];
+
+
+                        $.each(msg.listentity,function(index,value){
+                            if(value.measurementtype=="blood sugar")
+                            {
+                                $("#sugerdata").show();
+                                $("#rowdiastolic").hide();
+                                $("#rowsystolic").hide();
+                                $("#diastolicdata").hide();
+                                $("#systolicdata").hide();
+                                $("#target_zone").show();      
+                              $("#target_zone_diastolic").hide();
+                                $("#target_zone_systolic").hide();
+                                $("#pieBlock").show();
+                                arrayList.push(value.sugervalue);
+                             }
+                            else{
+                                 $("#pieBlock").hide();
+                                $("#sugerdata").hide();
+                                 $("#rowdiastolic").show();
+                                $("#rowsystolic").show();
+                                $("#diastolicdata").show();
+                                $("#systolicdata").show();
+                                $("#target_zone").hide(); 
+                                $("#target_zone_diastolic").show();
+                                $("#target_zone_systolic").show();
+                                $("#target_zone_diastolic").html("Target Zone Diastolic : 0");
+                                $("#target_zone_systolic").html("Target Zone Systolic : 0");
+                                arrayListDiastolic.push(value.pressurediastolic);
+                                arrayListSystolic.push(value.pressuresystolic);
+                            }   
+                        });
+
+
+                        var patientData=msg.listentity[0];
+
+                        dataPointId= patientData.id;
+
+                      //  data_point_id= patientData.id;
+
+                        if(patientData.measurementtype=="blood sugar")
+                        {
+                            $("#sugerdata").show();
+                             $("#rowdiastolic").hide();
+                                $("#rowsystolic").hide();
+                                $("#diastolicdata").hide();
+                                $("#systolicdata").hide();  
+                                 $("#target_zone").show(); 
+                                $("#target_zone_diastolic").hide();
+                                $("#target_zone_systolic").hide();
+                                $("#pieBlock").show();
+                               /* if(patientData.units==null){
+
+                                    $("#data_unit").html(patientData.sugervalue);
+                                }
+                                else{
+
+
+                                    $("#data_unit").html(patientData.sugervalue+" "+   $.cookie("unitbloodSugar"));
+                                    dataReadPoint(patientData.id);
+                                }*/
+                            
+
+                            $("#max_value").html(Math.max.apply(Math,arrayList));
+
+                            $("#max_unit").html( $.cookie("unitbloodSugar"));
+                            $.cookie("patientMaxValue",Math.max.apply(Math,arrayList))
+
+                            $("#min_value").html(Math.min.apply(Math,arrayList));
+                            $("#min_unit").html( $.cookie("unitbloodSugar"));
+                            $.cookie("patientMinValue",Math.min.apply(Math,arrayList))
+
+                            if(patientData.glucoseMax==null && patientData.glucoseMin==null){
+                                $("#target_zone").html("Target Zone Glucose : 0-0");
+                            }
+                            else{
+
+                                  
+                                
+                                $("#target_zone").html("Target Zone Glucose :  "+$.cookie("targetValueForSugarMin")+"-"+$.cookie("targetValueForSugarMax"));
+                                $.cookie("patientTargetZone",$.cookie("targetValueForSugar"));
+                            }
+                            
+                        }
+                        else{
+                                 $("#pieBlock").hide();   
+                                 $("#sugerdata").hide();
+                                 $("#rowdiastolic").show();
+                                $("#rowsystolic").show();
+                                $("#diastolicdata").show();
+                                $("#systolicdata").show();
+                               $("#target_zone").hide(); 
+                              $("#target_zone_diastolic").show();
+                                $("#target_zone_systolic").show();
+                               /* if(patientData.units==null){
+                                    $("#data_unit").html(patientData.pressurediastolic+"/"+patientData.pressuresystolic+" "+$.cookie("unitbloodPressure"));
+                                }
+                                else{
+
+                                    $("#data_unit").html(patientData.pressurediastolic+"/"+patientData.pressuresystolic+" "+$.cookie("unitbloodPressure"));
+                                    dataReadPoint(patientData.id);
+                                }*/
+                             
+
+                           /*  //$("#max_value").html(Math.max.apply(Math,arrayList));
+                             $("#max_value_diastolic").html(Math.max.apply(Math,arrayListDiastolic));
+                             $("#max_unit_diastolic").html($.cookie("unitbloodPressure"));
+                             $("#max_value_systolic").html(Math.max.apply(Math,arrayListSystolic));
+                             $("#max_unit_systolic").html($.cookie("unitbloodPressure"));
+                            //$("#max_unit").html(patientData.units);
+
+                            $.cookie("patientMaxValueDiastolic",Math.max.apply(Math,arrayListDiastolic));
+                            $.cookie("patientMaxValueSystolic",Math.max.apply(Math,arrayListSystolic));
+
+                            //$("#min_value").html(Math.min.apply(Math,arrayList));
+                            //$("#min_unit").html(patientData.units);
+                            $("#min_value_diastolic").html(Math.min.apply(Math,arrayListDiastolic));
+                            $("#min_unit_diastolic").html($.cookie("unitbloodPressure"));
+                            $("#min_value_systolic").html(Math.min.apply(Math,arrayListSystolic));
+                            $("#min_unit_systolic").html($.cookie("unitbloodPressure"));
+
+                             $.cookie("patientMinValueDiastolic",Math.min.apply(Math,arrayListDiastolic));
+                              $.cookie("patientMinValueSystolic",Math.min.apply(Math,arrayListSystolic))
+
+                            if(patientData.bloodPressureMax==null && patientData.bloodPressureMin==null){
+                                $("#target_zone_diastolic").html("Target Zone Diastolic : 0");
+                                  $("#target_zone_systolic").html("Target Zone Systolic : 0");
+                            }
+                            else{
+                                      $("#target_zone_diastolic").html("Target Zone Diastolic : "+$.cookie("targetValueForDiastolic"));
+                                  $("#target_zone_systolic").html("Target Zone Systolic : "+$.cookie("targetValueForSystolic"));
+                               /* $("#target_zone").html("Target Zone: "+patientData.bloodPressureMin+"-"+patientData.bloodPressureMax);
+                               // $.cookie("patientTargetZone",$.cookie("targetValueForPressure"));
+                            }*/
+                           
+                        }
+
+                    //    console.info(Math.max.apply(Math,arrayList)); 
+                    //    console.info(Math.min.apply(Math,arrayList));
+
+                        var total = 0;
+                        var totalDiastolic=0;
+                        var totalSystolic=0;
+                        $.each(arrayList,function() {
+                            total += this;
+                        });
+                        $.each(arrayListDiastolic,function(){
+                            totalDiastolic +=this;
+                        });
+                        $.each(arrayListSystolic,function(){
+                            totalSystolic +=this;
+                        });
+
+                    //    console.info("count:- "+total);
+                        
+                       /* $("#avg_value").html(parseInt(parseInt(total)/(parseInt(arrayList.length))));
+                          $("#avg_unit").html($.cookie("unitbloodSugar"));
+                          $.cookie("patientAvgValue",parseInt(parseInt(total)/(parseInt(arrayList.length))));
+                        $("#avg_value_diastolic").html(parseInt(parseInt(totalDiastolic)/(parseInt(arrayListDiastolic.length))));
+                           $("#avg_unit_diastolic").html($.cookie("unitbloodPressure")); 
+                        $("#avg_value_systolic").html(parseInt(parseInt(totalSystolic)/(parseInt(arrayListSystolic.length))));   
+                        $("#avg_unit_systolic").html($.cookie("unitbloodPressure"));
+
+                        $.cookie("patientAvgValueDiastolic",parseInt(parseInt(totalDiastolic)/(parseInt(arrayListDiastolic.length))));
+                        $.cookie("patientAvgValueSystolic",parseInt(parseInt(totalSystolic)/(parseInt(arrayListSystolic.length))));    
+                       
+                      */
+
+                      /*  var date=patientData.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');   
+                         var part=date.split(",");
+                        console.info(part);
+                        var d=new Date();
+                        d.setFullYear(part[0]);
+                        d.setMonth(part[1]-1);
+                        d.setDate(part[2]);
+                        d.setHours(part[3]);
+                        d.setMinutes(part[4]); 
+                        d.setSeconds(part[5]);
+
+                        var components = new String(d).split(' ').slice(1, 5);
+                        components[1].replace(/^0/, '');
+
+                $("#date_time").html(components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]);
+*/
+                
+                    
+
+                   
+                    var table="";
+                
+                   
+                    
+                    //alert(getDataPointsFromGraph.length);
+                    $.each(msg.listentity,function(index,value){
+
+                        
+
+                        table+="<tr>";
+
+
+                        var date=value.deviceTime.split('-');
+
+                        var dd=date[2].split(' ');
+                        var mm=date[1];
+                        var yyyy=date[0];
+
+                        //var d=mm+"-"+dd[0]+"-"+yyyy+" "+gettimeg;
+                        var d=value.deviceTime;
+
+                        table+="<td>"+d+"</td>";
+
+                        table+="<td>"+value.measurementtype+"</td>";
+
+                       
+
+                        if(value.measurementtype=="blood sugar")
+                        {
+
+                                 $("#setTarget").html("Target");
+                             table+="<td><span class='label label-success'>"+value.sugervalue+"</span></td>";
+
+                             var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+                      //       console.info(date);
+                             var part=date.split(",");
+                          //  alert(part);
+                            var d=new Date(part[0],(part[1]-1),part[2]);
+                            var cd=part[0]+""+part[1]+""+part[2];
+                            //d.setFullYear(part[0]);
+                            //d.setMonth(part[1]);
+                            //d.setDate(part[2]);
+                            d.setHours(part[3]);
+                            d.setMinutes(part[4]); 
+                            d.setSeconds(part[5]);
+                       //   console.info(d);
+
+                       var components = new String(d).split(' ').slice(1, 5);
+                        components[1].replace(/^0/,'');
+                         var resdate=new Date();
+                        resdate.setFullYear(1970);
+                        resdate.setMonth(01);
+                        resdate.setDate(01);
+                        resdate.setHours(part[3]);
+                        resdate.setMinutes(part[4]); 
+                        resdate.setSeconds(part[5]);
+                            console.info(v1+"/"+v2+"/"+v3+"/"+v4+"/"+v5+"/"+resdate);
+                            var marker="";
+                            var checkdate=dateCompare(cd);
+                            if( checkdate==1 )
+                            {
+                                    marker="triangle";
+                            }
+                            else if( checkdate==2 )
+                            {
+                                      marker="circle";
+                            } 
+                            else if(checkdate==3 )
+                            {
+                                      marker="square";
+                            } 
+                            
+                            else
+                            {
+                                      marker="cross";
+                            } 
+
+                                console.info(marker);
+                               
+                               
+                             if(parseInt(value.sugervalue)>=$.cookie("targetValueForSugarMax")){
+                               
+                                    highs++; 
+                              }
+                              else if(parseInt(value.sugervalue)<=$.cookie("targetValueForSugarMin")){ 
+                               
+                                    lows++;  
+                              }
+                              else if(parseInt(value.sugervalue)<$.cookie("targetValueForSugarMax")&&parseInt(value.sugervalue)>$.cookie("targetValueForSugarMin")){
+                                
+                                    normals++;
+                              }
+
+                               
+                            $("#deletecommentSugar").addClass("active");
+                              graphPoints.push({x :d ,y:parseInt(value.sugervalue),markerType: marker,  markerColor: (parseInt(value.sugervalue)>$.cookie("targetValueForSugarMax") )?"red":(parseInt(value.sugervalue)>$.cookie("targetValueForSugarMin") && parseInt(value.sugervalue)<$.cookie("targetValueForSugarMax"))?"yellowgreen":"red",markerSize: 12,toolTipContent:"<ul class=\"actions\"><li><a data-id='"+value.id+"' class=\"viewcommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon2.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"addcommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon3.png\" alt=\"\"></a></li><li><a   data-id='"+value.id+"' data-view='"+value.id+"' class=\"readCommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon4.png\" alt=\"\"></a></li><li><a id=\"deletecommentSugar\" data-id='"+value.id+"' class=\"deletecommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon1.png\" alt=\"\"></a></li></ul><p class=\"font16\">"+value.sugervalue+" "+$.cookie("unitbloodSugar")+"</p><span class=\"meta-date\">"+components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]+"</span>",click: function(e){
+                                $("#commentbox").show();setvaluetobox(value);$("#writeComment").show();}});
+                               titleDate ="Glucose Data Points";
+                              
+                                  
+                        }
+                        else{
+                             $("#setTarget").html("Target(Max value Diastolic/Systolic)");
+
+                             table+="<td><span class='label label-success'>"+value.pressurediastolic+"/"+value.pressuresystolic+"</span></td>";
+
+                             var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+                       //      console.info(date);
+                             var part=date.split(",");
+                      //      console.info(part);
+                            var d=new Date(part[0],(part[1]-1),part[2]);
+                            var cd=part[0]+""+part[1]+""+part[2];
+                            //d.setFullYear(part[0]);
+                            //d.setMonth(part[1]);
+                            //d.setDate(part[2]);
+                            d.setHours(part[3]);
+                            d.setMinutes(part[4]); 
+                            d.setSeconds(part[5]);
+
+                            var components = new String(d).split(' ').slice(1, 5);
+                            components[1].replace(/^0/, '');
+
+                             var resdate=new Date();
+                        resdate.setFullYear(1970);
+                        resdate.setMonth(01);
+                        resdate.setDate(01);
+                        resdate.setHours(part[3]);
+                        resdate.setMinutes(part[4]); 
+                        resdate.setSeconds(part[5]);
+
+                            
+                            console.info(v1+"/"+v2+"/"+v3+"/"+v4+"/"+v5+"/"+resdate);
+
+                            var marker="";
+
+                              var checkdate=dateCompare(cd);
+                            if( checkdate==1 )
+                            {
+                                    marker="triangle";
+                            }
+                            else if( checkdate==2 )
+                            {
+                                      marker="circle";
+                            } 
+                            else if(checkdate==3 )
+                            {
+                                      marker="square";
+                            } 
+                            
+                            else
+                            {
+                                      marker="cross";
+                            } 
+
+                                console.info(marker);
+
+                                
+                            if(parseInt(value.pressuresystolic)>=$.cookie("targetValueForSystolic"))
+                              {
+                                
+                                  highs++;
+                                   
+                              }
+                              else if(parseInt(value.pressurediastolic)<=$.cookie("targetValueForDiastolic")){
+                                   
+                                   lows++;
+                                    
+                              }
+                              else if(parseInt(value.pressurediastolic)>$.cookie("targetValueForDiastolic") && parseInt(value.pressuresystolic)<$.cookie("targetValueForSystolic")){
+                                         normals++;
+                                
+                              
+                              }
+                              //alert(d);
+                            
+                            graphPoints.push({ x : d , y : value.pressurediastolic,markerType:marker,  markerColor: (parseInt(value.pressuresystolic)>$.cookie("targetValueForSystolic"))?"red":(parseInt(value.pressurediastolic)>=$.cookie("targetValueForDiastolic") && parseInt(value.pressuresystolic)<=$.cookie("targetValueForSystolic"))?"yellowgreen":"red",  markerSize: 12,toolTipContent:"<ul class=\"actions\"><li><a data-id='"+value.id+"' class=\"viewcommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon2.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"addcommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon3.png\" alt=\"\"></a></li><li><a   data-id='"+value.id+"' data-view='"+value.id+"' class=\"readCommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon4.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"deletecommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon1.png\" alt=\"\"></a></li></ul><p class=\"font16\">"+value.pressurediastolic+"/"+value.pressuresystolic+" "+$.cookie("unitbloodPressure")+"</p><span class=\"meta-date\">"+components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]+"</span>",click: function(e){ $("#commentbox").show();setvaluetobox(value);$("#writeComment").show()}});
+
+                             graphPointsD.push({ x : d , y : value.pressuresystolic,markerType: marker,  markerColor: (parseInt(value.pressuresystolic)>$.cookie("targetValueForSystolic"))?"red":(parseInt(value.pressurediastolic)>=$.cookie("targetValueForDiastolic") && parseInt(value.pressuresystolic)<=$.cookie("targetValueForSystolic"))?"yellowgreen":"red",  markerSize: 12,toolTipContent:" ",click: function(e){ $("#commentbox").show();setvaluetobox(value);$("#writeComment").show();}});
+                                titleDate="Blood Pressure Data Points";
+                                
+                                 
+                        }
+
+                         
+                        if(value.measurementtype=="blood sugar")
+                        {
+
+                             if(value.sugervalue>value.glucoseMax)
+                              {
+                                table+="<td><span class='label label-warning'>High</span></td>";
+                                //high++;
+                                $.cookie("patientFState","High");
+                              }
+                              else if(value.sugervalue<value.glucoseMin){
+                                   table+="<td><span class='label label-danger'>Low</span></td>";
+                                 // low++;
+                                    $.cookie("patientFState","Low");
+                              }
+                              else
+                               {
+                                table+="<td><span class='label label-success'>Normal</span></td>";
+                                 //normal++;
+                                  $.cookie("patientFState","Normal");
+                               }
+                        }
+                        else{
+                             if(value.pressuresystolic>value.bloodPressureMax)
+                              {
+                                  table+="<td><span class='label label-warning'>High</span></td>";
+                                 // high++;
+                                   $.cookie("patientFState","High");
+                              }
+                              else if(value.pressuresystolic<value.bloodPressureMin){
+                                    table+="<td><span class='label label-danger'>Low</span></td>";
+                                   // low++;
+                                     $.cookie("patientFState","Low");
+                              }
+                              else {
+                                table+="<td><span class='label label-success'>Normal</span></td>";
+                                //normal++;
+                                 $.cookie("patientFState","Normal");
+                              }
+                           
+                        }
+                        
+
+                        if(value.measurementtype=="blood sugar")
+                        {
+                             var glucosemin=value.glucoseMin.split(".");
+                             var glucosemax=value.glucoseMax.split(".");
+                            table+="<td>"+glucosemin[0]+"/"+glucosemax[0]+"</td>";
+                        }
+                        else{
+                          var bloodpressuremin=value.bloodPressureMin.split(".");
+                          var bloodpressuremax=value.bloodPressureMax.split(".");
+                            table+="<td>"+bloodpressuremin[0]+"/"+bloodpressuremax[0]+"</td>";
+                        }
+
+                        if(value.docId==null)
+                        {
+                            table+="<td><div class='switchd switch-off' id='view"+value.id+"'>No</div></td><td>";
+                            
+                        }
+                        else{
+                            table+="<td><div class='switchd switch-on' id='view"+value.id+"'>Yes</div></td><td>";
+                        }
+
+
+                        table+="<ul class='list-inline'>";
+                        table+="<li><a class='black viewcomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-eye'></span></a></li>";
+                        table+="<li><a class='black addcomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-comment'></span></a></li>";
+                        table+="<li><a class='black readComment' href='javascript:void(0)' data-id='"+value.id+"' data-view='"+value.id+"'><span class='fa fa-check'></span></a></li>";
+                        table+="<li><a class='black deletecomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-close'></span></a></li>";
+                        table+="</ul></td></tr>";
+
+                        /*$(".comment").click(function(){
+
+                            //$('#myModal').modal('show');
+
+                            patientDataPointId = $(this).data('id');
+
+                            console.info("data point :- "+patientDataPointId);
+                        });
+*/
+                    });
+
+                   // $("#patient_data").html(table);
+                   if(patientData!=null){
+                    if(patientData.measurementtype=="blood sugar")
+                    {
+                      chartFunction(graphPoints,titleDate);
+                      //alert(lows+"/"+highs+"/"+normals)
+                     chartFunctionPie(lows,highs,normals,PTtitle);
+                    }
+                    else{
+                      //  alert("pressurediastolic")
+                      chartFunctionb(graphPoints,graphPointsD,titleDate);
+                         // chartFunctionPie(lows,highs,normals,PTtitle); 
+                          $("#chartContainerP").html("");
+                      }
+                    
+
+                       }
+                   }
+                  })
+                  .fail(function() {
+                      // login();
+                  });
+            };
+
+            
+                
+                highDate.setDate(highDate.getDate()-7);
+                lowDate.setDate(lowDate.getDate()+1);
+
+
+
+            getPatientData(lowDate,highDate,'last7days');
+
+
+
+   var getdocid="";
+
+                        var getPatientDatatable=function(){
+ 
+                $.ajax({
+                      type: "POST",
+                      /* url: basicUrl+"/rpms/doc/getpatientdata_withtime?access_token="+$.cookie("access_token"),
+                       data: "patientID="+patientID+"&datatype="+datatype+"&current="+hdate.getTime()+"&last="+ldate.getTime()+"&status="+status*/
+                      url: basicUrl+"/rpms/doc/getpatientdata?access_token="+$.cookie("access_token"),
+                      data: "patientID="+patientID+"&datatype="+datatype
+                    })
+                  .done(function( msg ) {
+                  //  console.info(msg);
+
+                    if(msg.listentity.length>0)
+                    {
+
+                        var arrayList=[];    
+
+
+                        $.each(msg.listentity,function(index,value){
+                            if(value.measurementtype=="blood sugar")
+                            {
+                                arrayList.push(value.sugervalue);
+                             }
+                            else{
+                                arrayList.push(value.pressurediastolic);
+                            }   
+                        });
+
+
+                        var patientData=msg.listentity[0];
+
+                        dataPointId= patientData.id;
+
+                      //  data_point_id= patientData.id;
+
+                        if(patientData.measurementtype=="blood sugar")
+                        {
+                             $("#setTarget").html("Target");
+                            // $.cookie("patientMaxValue",Math.max.apply(Math,arrayList))
+
+                            
+                            // $.cookie("patientMinValue",Math.min.apply(Math,arrayList))
+
+                            if(patientData.glucoseMax==null && patientData.glucoseMin==null){
+                                // $("#target_zone").html("Target Zone: 0-0");
+                            }
+                            else{
+                                
+                                 // $.cookie("patientTargetZone",patientData.glucoseMin+"-"+patientData.glucoseMax);
+                            }
+                            
+                        }
+                        else{
+                            
+                            // $.cookie("patientMaxValue",Math.max.apply(Math,arrayList))
+
+                           
+                            //  $.cookie("patientMinValue",Math.min.apply(Math,arrayList))
+
+
+                            // if(patientData.bloodPressureMax==null && patientData.bloodPressureMin==null){
+                            //     $("#target_zone").html("Target Zone: 0-0");
+                            // }
+                            // else{
+                            //     $("#target_zone").html("Target Zone: "+patientData.bloodPressureMin+"-"+patientData.bloodPressureMax);
+                            //      $.cookie("patientTargetZone",patientData.bloodPressureMin+"-"+patientData.bloodPressureMax);
+                            // }
+                           
+                        }
+
+                    //    console.info(Math.max.apply(Math,arrayList)); 
+                    //    console.info(Math.min.apply(Math,arrayList));
+
+                        var total = 0;
+                        $.each(arrayList,function() {
+                            total += this;
+                        });
+
+                    //    console.info("count:- "+total);
+
+                        
+                       
+                        // 
+                       
+                        var date=patientData.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+                    //     console.info(date);
+                         var part=date.split(",");
+                        console.info(part);
+                        var d=new Date();
+                        d.setFullYear(part[0]);
+                        d.setMonth(part[1]-1);
+                        d.setDate(part[2]);
+                        d.setHours(part[3]);
+                        d.setMinutes(part[4]); 
+                        d.setSeconds(part[5]);
+
+                   //     console.info(d);
+
+                        var components = new String(d).split(' ').slice(1, 5);
+                        components[1].replace(/^0/, '');
+
+                        gettimeg=components[3];
+                   //     console.info(components);
+
+                  
+                    }
+
+                   
+                    var table="";
+                    
+                    $.each(msg.listentity,function(index,value){
+
+                        
+
+                        table+="<tr>";
+
+
+                        var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+                    //     console.info(date);
+                         var part=date.split(",");
+                          var yyyy=part[0];
+                          var mm  =part[1];
+                          var dd  =part[2];
+                          var hrs =part[3];
+                          var min =part[4];
+                          var sec =part[5];
+
+                        var d=dd+"-"+mm+"-"+yyyy+" | "+hrs+":"+min+":"+sec;
+                        //alert(d)
+                        //d=value.deviceTime;
+                        table+="<td>"+d+"</td>";
+
+                        table+="<td>"+value.measurementtype+"</td>";
+
+                       
+
+                        if(value.measurementtype=="blood sugar")
+                        {
+
+
+                             /*if(value.sugervalue>value.glucoseMax){
+                                high++; 
+                              }
+                              else if(value.sugervalue<value.glucoseMin){  
+                                  low++;     
+                              }
+                              else{
+                                 normal++;
+                              }*/
+                             table+="<td><span class='label label-success'>"+value.sugervalue+"</span></td>";
+
+                             var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+                      //       console.info(date);
+                             var part=date.split(",");
+                          //  alert(part);
+                            var d=new Date(part[0],(part[1]-1),part[2]);
+                            //d.setFullYear(part[0]);
+                            //d.setMonth(part[1]);
+                            //d.setDate(part[2]);
+                            d.setHours(part[3]);
+                            d.setMinutes(part[4]); 
+                            d.setSeconds(part[5]);
+
+                       //     console.info(d);
+
+                       var components = new String(d).split(' ').slice(1, 5);
+                        components[1].replace(/^0/, '');
+
+                         var resdate=new Date();
+                        resdate.setFullYear(1970);
+                        resdate.setMonth(01);
+                        resdate.setDate(01);
+                        resdate.setHours(part[3]);
+                        resdate.setMinutes(part[4]); 
+                        resdate.setSeconds(part[5]);
+
+                            
+                            console.info(v1+"/"+v2+"/"+v3+"/"+v4+"/"+v5+"/"+resdate);
+
+                            var marker="";
+
+                            if(resdate >= v1 || resdate < v2 )
+                            {
+                                    marker="triangle";
+                            }
+                            else if(resdate >= v2 || resdate < v3 )
+                            {
+                                      marker="cross";
+                            } 
+                            else if(resdate >= v3 || resdate < v4 )
+                            {
+                                      marker="circle";
+                            } 
+                            else if(resdate >= v4 || resdate < v5 )
+                            {
+                                      marker="square";
+                            } 
+                            else
+                            {
+                                      marker="circle";
+                            } 
+
+                                console.info(marker);
+                       
+                              graphPoints.push({x : d ,y:value.sugervalue,markerType: (parseInt(value.sugervalue) <patientData.glucoseMin)?"square":(parseInt(value.sugervalue)>patientData.glucoseMax)?"triangle":"circle",  markerColor: (parseInt(value.sugervalue)>patientData.glucoseMax )?"red":(parseInt(value.sugervalue)>patientData.glucoseMin)?"yellowgreen":"red",markerSize: 12,toolTipContent:"<ul class=\"actions\"><li><a data-id='"+value.id+"' class=\"viewcommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon2.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"addcommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon3.png\" alt=\"\"></a></li><li><a   data-id='"+value.id+"' data-view='"+value.id+"' class=\"readCommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon4.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"deletecommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon1.png\" alt=\"\"></a></li></ul><p class=\"font16\">"+value.sugervalue+" "+$.cookie("unitbloodSugar")+"</p><span class=\"meta-date\">"+components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]+"</span>"});
+
+                               titleDate="Glucose Data Points";
+                            
+                              /* data.push({d,"Gulcose",value.sugervalue,"status","120-180","yes"});*/
+                        }
+                        else{
+
+                                $("#setTarget").html("Target(Max value Diastolic/Systolic)");
+                        
+                             table+="<td><span class='label label-success'>"+value.pressurediastolic+"/"+value.pressuresystolic+"</span></td>";
+
+                             var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+                       //      console.info(date);
+                             var part=date.split(",");
+                      //      console.info(part);
+                            var d=new Date(part[0],(part[1]-1),part[2]);
+                            //d.setFullYear(part[0]);
+                            //d.setMonth(part[1]);
+                            //d.setDate(part[2]);
+                            d.setHours(part[3]);
+                            d.setMinutes(part[4]); 
+                            d.setSeconds(part[5]);
+
+                            var components = new String(d).split(' ').slice(1, 5);
+                            components[1].replace(/^0/, '');
+
+                             var resdate=new Date();
+                        resdate.setFullYear(1970);
+                        resdate.setMonth(01);
+                        resdate.setDate(01);
+                        resdate.setHours(part[3]);
+                        resdate.setMinutes(part[4]); 
+                        resdate.setSeconds(part[5]);
+
+                            
+                            console.info(v1+"/"+v2+"/"+v3+"/"+v4+"/"+v5+"/"+resdate);
+
+                            var marker="";
+
+                            if(resdate >= v1 || resdate < v2 )
+                            {
+                                    marker="triangle";
+                            }
+                            else if(resdate >= v2 || resdate < v3 )
+                            {
+                                      marker="cross";
+                            } 
+                            else if(resdate >= v3 || resdate < v4 )
+                            {
+                                      marker="circle";
+                            } 
+                            else if(resdate >= v4 || resdate < v5 )
+                            {
+                                      marker="square";
+                            } 
+                            else
+                            {
+                                      marker="circle";
+                            } 
+
+                                console.info(marker);
+                            
+                            graphPoints.push({ x : d , y : value.pressurediastolic,markerType: (parseInt(value.pressurediastolic)<patientData.bloodPressureMin)?"square":(parseInt(value.pressuresystolic)>patientData.bloodPressureMax)?"triangle":"circle",  markerColor: (parseInt(value.pressuresystolic)>patientData.bloodPressureMax)?"red":(parseInt(value.pressurediastolic)>=patientData.bloodPressureMin && parseInt(value.pressuresystolic)<=patientData.bloodPressureMax)?"yellowgreen":"red",  markerSize: 12,toolTipContent:"<ul class=\"actions\"><li><a data-id='"+value.id+"' class=\"viewcommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon2.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"addcommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon3.png\" alt=\"\"></a></li><li><a   data-id='"+value.id+"' data-view='"+value.id+"' class=\"readCommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon4.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"deletecommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon1.png\" alt=\"\"></a></li></ul><p class=\"font16\">"+value.pressurediastolic+"/"+value.pressuresystolic+" "+$.cookie("unitbloodPressure")+"</p><span class=\"meta-date\">"+components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]+"</span>"});
+
+                             graphPointsD.push({ x : d , y : value.pressuresystolic,markerType: (parseInt(value.pressurediastolic)<patientData.bloodPressureMin)?"square":(parseInt(value.pressuresystolic)>patientData.bloodPressureMax)?"triangle":"circle",  markerColor: (parseInt(value.pressuresystolic)>patientData.bloodPressureMax)?"red":(parseInt(value.pressurediastolic)>=patientData.bloodPressureMin && parseInt(value.pressuresystolic)<=patientData.bloodPressureMax)?"yellowgreen":"red",  markerSize: 12,toolTipContent:" "});
+
+                                titleDate="Blood Pressure Data Points";
+                                 
+                        }
+
+                        
+                        if(value.measurementtype=="blood sugar")
+                        {
+
+                             if(value.sugervalue>value.glucoseMax)
+                              {
+                                table+="<td><span class='label label-warning'>High</span></td>";
+                               // high++;
+                                 $.cookie("patientFState","High");
+                              }
+                              else if(value.sugervalue<value.glucoseMin){
+                                   table+="<td><span class='label label-danger'>Low</span></td>";
+                                 //  low++;
+                                    $.cookie("patientFState","Low");
+                              }
+                              else
+                               {
+                                table+="<td><span class='label label-success'>Normal</span></td>";
+                                 //normal++;
+                                  $.cookie("patientFState","Normal");
+                               }
+                        }
+                        else{
+                             if(value.pressuresystolic>value.bloodPressureMax)
+                              {
+                                  table+="<td><span class='label label-warning'>High</span></td>";
+                                  //high++;
+                                   $.cookie("patientFState","High");
+                              }
+                              else if(value.pressuresystolic<value.bloodPressureMin){
+                                    table+="<td><span class='label label-danger'>Low</span></td>";
+                                   // low++;
+                                     $.cookie("patientFState","Low");
+                              }
+                              else {
+                                table+="<td><span class='label label-success'>Normal</span></td>";
+                                //normal++;
+                                 $.cookie("patientFState","Normal");
+                              }
+                           
+                        }
+                        
+
+                         if(value.measurementtype=="blood sugar")
+                        {
+                             var glucosemin=value.glucoseMin.split(".");
+                             var glucosemax=value.glucoseMax.split(".");
+                            table+="<td>"+glucosemin[0]+"/"+glucosemax[0]+"</td>";
+                        }
+                        else{
+                          var bloodpressuremin=value.bloodPressureMin.split(".");
+                          var bloodpressuremax=value.bloodPressureMax.split(".");
+                            table+="<td>"+bloodpressuremin[0]+"/"+bloodpressuremax[0]+"</td>";
+                        }
+
+
+                        if(value.docId==null)
+                        {
+                            table+="<td><div class='switchd switch-off' id='view"+value.id+"'>No</div></td><td>";
+                            
+                        }
+                        else{
+                            table+="<td><div class='switchd switch-on' id='view"+value.id+"'>Yes</div></td><td>";
+                        }
+
+
+                        table+="<ul class='list-inline'>";
+                        table+="<li><a class='black viewcomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-eye'></span></a></li>";
+                        table+="<li><a class='black addcomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-comment'></span></a></li>";
+                       if(value.docId==null){
+                          
+                        table+="<li id='hideComment"+value.id+"' ><a class='black readComment' href='javascript:void(0)' data-id='"+value.id+"' data-view='"+value.id+"'><span class='fa fa-check'></span></a></li>";
+                        
+                       }
+                        
+                        table+="<li><a class='black deletecomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-close'></span></a></li>";
+                        table+="</ul></td></tr>";
+
+                        /*$(".comment").click(function(){
+
+                            //$('#myModal').modal('show');
+
+                            patientDataPointId = $(this).data('id');
+
+                            console.info("data point :- "+patientDataPointId);
+                        });
+*/
+                    });
+
+                    $("#patient_data").html(table);
+                   
+                  })
+                  .fail(function() {
+                      // login();
+                  });
+            };
+
+            getPatientDatatable();
+
+
+
+            $("#messageToPatient").click(function(){
+                window.location.href = "../message/messgae.html?patientID="+patientID+"&value="+$.cookie("docID");
+            });
+
+
+            $("#messageForPatient").click(function(){
+                window.location.href = "../message/nurse-doctor-message.html?patientID="+patientID+"&value="+$.cookie("docID");
+            });
+
+            $("#commentForPatient").click(function(){
+                
+            });
+
+            jQuery(document).ready(function () {
+                getUnReadMessageStatus("/rpms/doc/unread_message",$.cookie("docID"));
+                //hide a div after 3 seconds
+                setInterval(function(){ getUnReadMessageStatus("/rpms/doc/unread_message",$.cookie("docID")); }, 10000);
+
+           //     console.info("unread count:- "+unreadMessageCount);
+            });
+
+            var setImage=function(){
+                // Get on screen image
+                var screenImage = $("#img");
+
+                // Create new offscreen image to test
+                var theImage = new Image();
+                theImage.src = screenImage.attr("src");
+
+                // Get accurate measurements from that.
+                var width = theImage.width;
+                var height = theImage.height;
+
+             //   console.info(width+"/"+height);
+
+                if(width>100 || height>70)
+                {
+                  screenImage.attr('height','70');
+                  screenImage.attr('width','100');
+                }
+            };
+           
+            setInterval(setImage, 1000);
+
+
+             
+    </script>
+
+<script>
+               
+    $("#submit_comment").click(function(){
+
+        if($("#comment").val()=="")
+        {
+            alert("Please enter Comment.");
+        }
+        else if($("#comment").val().trim()=="")
+        {
+            alert("Blank comment is not allowed.");
+        }
+        else{
+                entrydate=new Date();
+                yr=entrydate.getFullYear();
+                mnth=entrydate.getMonth()+1;
+               dt= entrydate.getDate();
+                hrs=entrydate.getHours();
+               mint= entrydate.getMinutes(); 
+                sec=entrydate.getSeconds();
+
+            var comment={};
+
+            comment.message=$("#comment").val();
+            comment.docID=$.cookie("docID");
+            comment.patientID=patientID;
+            comment.isReadNurse='0';
+            comment.isReadDoc='1';
+            comment.data_point_id=dataPointId;
+            comment.isDeleted='0';
+            comment.isSentDoc='1';
+            comment.docName=$.cookie("name");
+            comment.entrytime=yr+"-"+mnth+"-"+dt+"-"+" "+hrs+":"+mint+":"+sec;
+
+    //      console.info(JSON.stringify(comment));
+
+            $.ajax({
+                  type: "POST",
+                  url: basicUrl+"/rpms/doc/datapointcomment?access_token="+$.cookie("access_token"),
+                  data: "comment="+JSON.stringify(comment)
+                })
+              .done(function( msg ) {
+                //alert(msg.message.id)
+                 dataReadPoint(dataPointId);
+                //alert(msg.message);
+                $("#comment").val('');
+              })
+              .fail(function() {
+                  //login();
+                  $("#comment").val('');
+              });
+        }
+         dataReadPoint(dataPointId);
+
+    });
+
+    // When the user clicks on comment button
+    $('body').on('click', 'a.addcomment', function() {
+
+        patientDataPointId = $(this).data('id');
+
+    //  console.info("data point :- "+patientDataPointId);
+        
+        $("#myModal").modal('show');
+    });
+
+    // When the user clicks on comment button
+    $('body').on('click', 'a.viewcomment', function() {
+
+        patientDataPointId = $(this).data('id');
+
+   //   console.info("data point :- "+patientDataPointId);
+        
+        $("#myModal1").modal('show');
+
+        dataPoint();
+    });
+
+
+    $('body').on('click', 'a.deletecomment', function() {
+
+        var id = $(this).data('id');
+
+     //   console.info("data point :- "+id);
+
+        var con=confirm("Are you sure you want to delete this data point?");
+         if(con)
+         {
+            $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/deletedatapoint?access_token="+$.cookie("access_token"),
+              data: "dataPointId="+id
+            })
+          .done(function( msg ) {
+
+                //alert(msg.message);
+
+                //location.reload();
+                if($("#grid_glucose").hasClass("active")){
+                    datatype='blood sugar';
+                     $("#grid_name").html('Glucose Physiological Data Points');
+                        graphPoints.length=0;
+                         getPatientDatatable();
+                       
+                           
+                }
+                
+                else if($("#grid_pressure").hasClass("active")){
+
+                        datatype='blood pressure';
+                        $("#grid_name").html('Blood Pressure Physiological Data Points');
+                        graphPoints.length=0;
+                        getPatientDatatable();
+                        
+                }
+          })
+          .fail(function() {
+              //login();
+          });
+         }
+        
+    });
+
+     $('body').on('click', 'a.readComment', function() {
+                            
+         
+      
+        console.info("readComment");
+        var patientDataPointId = $(this).data('id');
+
+        var view = $(this).data('view');
+       
+     
+        console.info("data point :- "+patientDataPointId+"/"+view);
+
+        //$("#view"+view).html("Yes");
+
+        $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/updatePatientDataComment?access_token="+$.cookie("access_token"),
+              data: "id="+patientDataPointId+"&status=yes&docID="+$.cookie("docID")
+            })
+          .done(function( msg ) {
+
+                //alert(msg.message);
+
+               $("#view"+view).html("Yes");
+            
+                $("#hideComment"+view).hide();    
+              
+              
+               $("#view"+view).removeClass( "switch-off" ).addClass( "switch-on" );
+
+
+          })
+          .fail(function() {
+                alert('Comments Not Updated.');
+              //login();
+          });
+
+    });
+var lastindex;
+var getValuesForCommentsOnClick=function(getDataPoints,gettypeforcomment){
+
+    if(lastindex==null){
+
+        lastindex=getDataPoints.length-1;
+        //alert(getDataPoints.length)
+
+    }
+    
+     else if(lastindex < 0){
+            lastindex=0;
+     }
+     else if(lastindex > getDataPoints.length-1){
+        lastindex=getDataPoints.length-1;
+     }
+     if(getDataPoints==null || getDataPoints.length==0){
+
+     }
+     else{
+
+             getDataCommentRow=getDataPoints[lastindex];
+               dataReadPoint(getDataCommentRow.id);
+            
+              if(gettypeforcomment=="blood sugar")
+                {
+                      if(getDataCommentRow.units==null){
+
+                                    $("#data_unit").html(getDataCommentRow.sugervalue);
+                                }
+                                else{
+                                         
+                                    $("#data_unit").html(getDataCommentRow.sugervalue+" "+$.cookie("unitbloodSugar"));
+
+                                }
+
+                        if(getDataCommentRow.glucoseMax==null && getDataCommentRow.glucoseMin==null){
+                            $("#target_zone").html("Target Zone Glucose: 0-0");
+                        }
+                        else{
+                            
+                             $("#target_zone").html("Target Zone Glucose :  "+$.cookie("targetValueForSugarMin")+"-"+$.cookie("targetValueForSugarMax"));
+                            $.cookie("patientTargetZone",getDataCommentRow.glucoseMin+"-"+getDataCommentRow.glucoseMax);
+                        }
+                }
+                else{
+                     if(getDataCommentRow.units==null){
+                                    $("#data_unit").html(getDataCommentRow.pressurediastolic+"/"+getDataCommentRow.pressuresystolic+" "+$.cookie("unitbloodPressure"));
+                                }
+                                else{
+                                       
+                                    $("#data_unit").html(getDataCommentRow.pressurediastolic+"/"+getDataCommentRow.pressuresystolic+" "+$.cookie("unitbloodPressure"));
+                                }
+                     if(getDataCommentRow.bloodPressureMax==null && getDataCommentRow.bloodPressureMin==null){
+                                $("#target_zone_diastolic").html("Target Zone Diastolic : 0");
+                                  $("#target_zone_systolic").html("Target Zone Systolic : 0");
+                            }
+                            else{
+                                 
+                                 $("#target_zone_diastolic").html("Target Zone Diastolic : "+$.cookie("targetValueForDiastolic"));
+                                  $("#target_zone_systolic").html("Target Zone Systolic : "+$.cookie("targetValueForSystolic"));
+                            }
+                }
+
+
+                var date=getDataCommentRow.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+             //    console.info(date);
+                 var part=date.split(",");
+              //  console.info(part);
+                var d=new Date();
+                d.setFullYear(part[0]);
+                d.setMonth(part[1]-1);
+                d.setDate(part[2]);
+                d.setHours(part[3]);
+                d.setMinutes(part[4]); 
+                d.setSeconds(part[5]);
+
+           //     console.info(d);
+
+                var components = new String(d).split(' ').slice(1, 5);
+                components[1].replace(/^0/, '');
+
+
+            //    console.info(components);
+
+               $("#date_time").html(components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]);
+
+
+     }
+    
+
+}
+
+$("body").keyup(function( event ) {
+  if ( event.which ==37 ) {
+          
+               
+
+               if(datatype=="blood sugar")
+                {
+                     lastindex--;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood sugar");
+                        
+                }
+                else{
+                        lastindex--;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood pressure");
+                         
+                      
+                    }
+                    
+
+               
+         
+
+  }
+});
+
+    $("#left_data_point").click(function(){
+      
+        
+
+               if(datatype=="blood sugar")
+                {
+                     lastindex--;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood sugar");
+                       
+                }
+                else{
+                        lastindex--;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood pressure");
+                         
+                      
+                    }
+
+             
+          
+                      
+          
+          
+    });
+
+
+    var setvaluetobox = function(patientData){
+         
+         if(patientData!=null){
+            
+            $.each(getDataPointsFromGraph,function(index,value){
+
+                if(value.id==patientData.id){
+
+                    lastindex=index;
+                    //break;
+                }
+
+            });
+             if(datatype=="blood sugar")
+                {
+
+                         $("#target_zone").html("Target Zone Glucose :  "+$.cookie("targetValueForSugarMin")+"-"+$.cookie("targetValueForSugarMax"));     
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood sugar");
+                       
+                }
+                else{
+                       
+                        $("#target_zone_diastolic").html("Target Zone Diastolic : "+$.cookie("targetValueForDiastolic"));
+                                  $("#target_zone_systolic").html("Target Zone Systolic : "+$.cookie("targetValueForSystolic"));
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood pressure");
+                      
+                      
+                    }
+         }
+
+
+
+    }
+
+
+$("body").keyup(function(event){
+
+               if(datatype=="blood sugar")
+                {
+                     lastindex++;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood sugar");
+                       
+                }
+                else{
+                        lastindex++;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood pressure");
+                      
+                      
+                    }
+
+             
+          
+
+
+});
+
+    $("#right_data_point").click(function(){
+     
+       
+
+               if(datatype=="blood sugar")
+                {
+                     lastindex++;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood sugar");
+                       
+                }
+                else{
+                        lastindex++;
+                        getValuesForCommentsOnClick(getDataPointsFromGraph,"blood pressure");
+                       
+                      
+                    }
+
+       
+    });
+    
+    var resetALLValues=function()
+{
+    low=0;
+    high=0;
+    normal=0;
+};
+
+</script>
+
+
+<script>
+    // When the user clicks on comment button
+    $('body').on('click', 'a.viewcommentGraphSugar', function() {
+
+        patientDataPointId = $(this).data('id');
+
+   //   console.info("data point :- "+patientDataPointId);
+        
+        $("#myModal1").modal('show');
+
+        dataPoint();
+    });
+
+    // When the user clicks on comment button
+    $('body').on('click', 'a.addcommentGraphSugar', function() {
+
+        patientDataPointId = $(this).data('id');
+
+    //  console.info("data point :- "+patientDataPointId);
+        
+        $("#myModal").modal('show');
+    });
+
+
+    $('body').on('click', 'a.deletecommentGraphSugar', function() {
+
+        var id = $(this).data('id');
+
+     //   console.info("data point :- "+id);
+
+        var con=confirm("Are you sure you want to delete this data?");
+         if(con)
+         {
+            $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/deletedatapoint?access_token="+$.cookie("access_token"),
+              data: "dataPointId="+id
+            })
+          .done(function( msg ) {
+
+                //alert(msg.message);
+                //if($("#deletecommentSugar").hasClass("active")){
+                     dayCount=0;
+                     //resetWeekMonth();
+                    //alert("inside")
+                     datatype='blood sugar';
+                    $("#graph_name").html('Glucose');
+                    /* graphPoints.length=0;
+                     lowDate = new Date();
+                      highDate = new Date();
+
+                     lowDate.setDate(lowDate.getDate()+1);
+                     highDate.setDate(highDate.getDate()-7);*/
+               
+                     getPatientData(lowDate,highDate,'last7days');
+                     //alert(wk)
+                      $("#last7days").html(wk+" Weeks Ago");
+
+                //}
+                //$("#deletecommentSugar").removeClass("active");
+                
+                //location.reload();
+          })
+          .fail(function() {
+              //login();
+          });
+         }
+        
+    });
+
+     $('body').on('click', 'a.readCommentGraphSugar', function() {
+                            
+        console.info("readComment");
+        var patientDataPointId = $(this).data('id');
+
+        var view = $(this).data('view');
+
+        console.info("data point :- "+patientDataPointId+"/"+view);
+
+        //$("#view"+view).html("Yes");
+
+        $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/updatePatientDataComment?access_token="+$.cookie("access_token"),
+              data: "id="+patientDataPointId+"&status=yes&docID="+$.cookie("docID")
+            })
+          .done(function( msg ) {
+
+                //alert(msg.message);
+
+               $("#view"+view).html("Yes");
+
+               $("#view"+view).removeClass( "switch-off" ).addClass( "switch-on" );
+
+
+          })
+          .fail(function() {
+                alert('Comments Not Updated.');
+              //login();
+          });
+
+    });
+
+
+    // When the user clicks on comment button
+    $('body').on('click', 'a.viewcommentGraphPressure', function() {
+
+        patientDataPointId = $(this).data('id');
+
+   //   console.info("data point :- "+patientDataPointId);
+        
+        $("#myModal1").modal('show');
+
+        dataPoint();
+    });
+
+    // When the user clicks on comment button
+    $('body').on('click', 'a.addcommentGraphPressure', function() {
+
+        patientDataPointId = $(this).data('id');
+
+    //  console.info("data point :- "+patientDataPointId);
+        
+        $("#myModal").modal('show');
+    });
+
+
+    $('body').on('click', 'a.deletecommentGraphPressure', function() {
+
+        var id = $(this).data('id');
+
+     //   console.info("data point :- "+id);
+
+        var con=confirm("Are you sure you want to delete this data point?");
+         if(con)
+         {
+            $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/deletedatapoint?access_token="+$.cookie("access_token"),
+              data: "dataPointId="+id
+            })
+          .done(function( msg ) {
+
+                //alert(msg.message);
+                //location.reload();
+                 //if($(".#deletecommentPressure").hasClass("active")){
+                     dayCount=0;
+                     //resetWeekMonth();
+                     datatype='blood pressure';
+                    titleDate="Blood Pressure Data Points";
+                    $("#graph_name").html('Blood Pressure');
+                   /* graphPoints.length=0;
+                    lowDate = new Date();
+                    highDate = new Date();
+     
+                     lowDate.setDate(lowDate.getDate()+1);
+                     highDate.setDate(highDate.getDate()-7);*/
+          
+
+
+            getPatientData(lowDate,highDate,'last7days');
+             $("#last7days").html(wk+" Weeks Ago");
+               // }
+                //$("#deletecommentPressure").removeClass("active");
+
+          })
+          .fail(function() {
+              //login();
+          });
+         }
+        
+    });
+
+     $('body').on('click', 'a.readCommentGraphPressure', function() {
+                            
+        console.info("readComment");
+        var patientDataPointId = $(this).data('id');
+
+        var view = $(this).data('view');
+
+        console.info("data point :- "+patientDataPointId+"/"+view);
+
+        //$("#view"+view).html("Yes");
+
+        $.ajax({
+              type: "POST",
+              url: basicUrl+"/rpms/doc/updatePatientDataComment?access_token="+$.cookie("access_token"),
+              data: "id="+id+"&status=yes&docID="+$.cookie("docID")
+            })
+          .done(function( msg ) {
+
+                //alert(msg.message);
+
+               $("#view"+view).html("Yes");
+
+               $("#view"+view).removeClass( "switch-off" ).addClass( "switch-on" );
+
+
+          })
+          .fail(function() {
+                alert('Comments Not Updated.');
+              //login();
+          });
+
+    });    
+
+
+
+</script>
+
+<script>
+
+$("#grid_glucose").click(function(){
+
+    $("#grid_block").show();
+    $("#graph_block").hide();
+     $("#grid_pressure").removeClass("active");
+    $("#grid_glucose").addClass("active");
+    $("#rc").addClass("active");
+   
+
+    datatype='blood sugar';
+    $("#grid_name").html('Glucose Physiological Data Points');
+    graphPoints.length=0;
+    
+
+            getPatientDatatable();
+    
+});
+
+$("#grid_pressure").click(function(){
+
+    $("#grid_block").show();
+    $("#graph_block").hide();
+      $("#grid_pressure").addClass("active");
+    $("#grid_glucose").removeClass("active");
+    $("#rc").addClass("active");
+  
+
+    datatype='blood pressure';
+    $("#grid_name").html('Blood Pressure Physiological Data Points');
+    graphPoints.length=0;
+    
+
+            getPatientDatatable();
+});
+
+
+$("#graph_glucose").click(function(){
+
+    dayCount=0;
+    resetWeekMonth();
+    $("#grid_block").hide();
+    $("#graph_block").show();
+    $("#graph_glucose").addClass("active");
+    $("#graph_pressure").removeClass("active");
+    datatype='blood sugar';
+    $("#graph_name").html('Glucose');
+     graphPoints.length=0;
+     lowDate = new Date();
+     highDate = new Date();
+
+    lowDate.setDate(lowDate.getDate()+1);
+    highDate.setDate(highDate.getDate()-7);
+               
+
+
+            getPatientData(lowDate,highDate,'last7days');
+});
+
+$("#graph_pressure").click(function(){
+ 
+ dayCount=0;
+resetWeekMonth();
+    $("#grid_block").hide();
+    $("#graph_block").show();
+    $("#graph_pressure").addClass("active");
+    $("#graph_glucose").removeClass("active");
+    datatype='blood pressure';
+titleDate="Blood Pressure Data Points";
+    $("#graph_name").html('Blood Pressure');
+     graphPoints.length=0;
+    lowDate = new Date();
+     highDate = new Date();
+     
+                  lowDate.setDate(lowDate.getDate()+1);
+                highDate.setDate(highDate.getDate()-7);
+          
+
+
+            getPatientData(lowDate,highDate,'last7days');
+});
+
+
+</script>
+
+<script>
+        $("#refresh").click(function(){
+             resetWeekMonth();
+
+            if ($("#graph_pressure").hasClass("active")) {
+                  
+                     //location.reload();
+                     $("#grid_block").hide();
+                        $("#graph_block").show();
+
+                datatype='blood pressure';
+
+                $("#graph_name").html('Blood Pressure');
+                graphPoints.length=0;
+                lowDate = new Date();
+                highDate = new Date();
+     
+               lowDate.setDate(lowDate.getDate()+1);
+                highDate.setDate(highDate.getDate()-7);
+                    
+
+
+                    getPatientData(lowDate,highDate,'last7days');
+        }
+        else if($("#graph_glucose").hasClass("active")){
+              
+                 $("#grid_block").hide();
+                $("#graph_block").show();
+   /* $("#graph_glucose").addClass("active");*/
+
+                 datatype='blood sugar';
+                $("#graph_name").html('Glucose');
+                 graphPoints.length=0;
+                    lowDate = new Date();
+                     highDate = new Date();
+
+                      lowDate.setDate(lowDate.getDate()+1);
+                         highDate.setDate(highDate.getDate()-7);
+                         
+
+
+                            getPatientData(lowDate,highDate,'last7days');
+                            }
+        
+        
+        });
+
+
+        
+/*$("#last7days").click(function(){
+
+    lastD.setDate(lastD.getDate()-7);
+
+    getGraphDetailsAsTime(currentD,lastD,'last7days');
+});*/
+
+var timeValue=false;
+var wk=0;
+//var wkdelete=0;
+$("#last7days").click(function(){
+    $( "#month" ).removeClass( "active" );
+    $( "#week" ).addClass( "active" );
+     $("#last7days").html("This Week");
+     wk=0;
+     //wkdelete=0;
+     dayCount=0;
+    graphPoints.length=0;
+    graphPointsD.lenth=0;
+
+
+    $("#time").show();
+    lowDate=new Date();
+    highDate= new Date();
+       lowDate.setDate(lowDate.getDate()+1);
+        highDate.setDate(highDate.getDate()-7);
+    // alert(lowDate+" / "+highDate);
+         getPatientData(lowDate,highDate,'last7days');
+
+})
+
+$("#last7days_left").click(function(){  
+
+    //alert("in left");
+    $( "#month" ).removeClass( "active" );
+    $( "#week" ).addClass( "active" );
+
+     $("#last7days").html("Last 7 Days");
+
+    console.info("left");
+
+    lastD.setDate(lastD.getDate()-7);
+    dayCount=0;
+    graphPoints.length=0;
+    graphPointsD.lenth=0;
+
+
+    $("#time").show();
+
+    var lastcomponents = new String(lastD).split(' ').slice(1, 4);
+    lastcomponents[1].replace(/^0/, '');
+
+    var curcomponents = new String(currentD).split(' ').slice(1, 4);
+    curcomponents[1].replace(/^0/, '');
+
+    console.info(lastcomponents+"/"+curcomponents);
+
+  /*  $("#graph_time").html("Graph created from "+lastcomponents[0]+"-"+lastcomponents[1]+"-"+lastcomponents[2]+" to "+curcomponents[0]+"-"+curcomponents[1]+"-"+curcomponents[2]);*/
+
+    console.info("current date:- "+currentD+"/ last:- "+lastD);
+
+    lowDate.setDate(lowDate.getDate()-7);
+    highDate.setDate(highDate.getDate()-7);
+
+    getPatientData(lowDate,highDate,'last7days');
+
+    currentD.setDate(currentD.getDate()-7)
+     wk++;
+    // wkdelete++;
+        if(wk==1){
+            $("#last7days").html("Last  Week");
+        }
+    
+    
+        else{
+            $("#last7days").html(wk+" Weeks Ago");
+       
+        }  
+
+
+    
+
+    timeValue=true;
+});
+
+$("#last7days_right").click(function(){ 
+
+    console.info("right");
+
+
+ dayCount=0;
+    graphPoints.length=0;
+    graphPointsD.lenth=0;
+
+    if(timeValue){
+        console.info("first call left");
+        $( "#month" ).removeClass( "active" );
+        $( "#week" ).addClass( "active" );
+    graphPoints.length=0;
+    graphPointsD.length=0;
+        var components = new String(new Date()).split(' ').slice(1, 4);
+        components[1].replace(/^0/, '');
+        var date=components.join(' ');
+
+        console.info(date);
+
+        var components1 = new String(currentD).split(' ').slice(1, 4);
+        components1[1].replace(/^0/, '');
+        var date1=components1.join(' ');
+
+        if(date1 == date)
+        {
+            $("#last7days").html("This Week");
+            timeValue=false;
+            console.info('date equals');
+        }
+        else if(currentD < new Date()){
+
+            currentD.setDate(currentD.getDate()+7);
+            //alert(currentD);
+             wk--;
+            // wkdelete--;
+             if(wk==0){
+                 $("#last7days").html("This Week");
+             }
+              else if(wk==1){
+           
+           
+                     $("#last7days").html("Last Week");
+                    
+                }
+              
+        else{
+                      if(wk<0){
+                            wk=0;
+                         }  
+                         else{
+                                $("#last7days").html(wk+" Weeks Ago");     
+                         }    
+        
+               }
+
+            console.info("current date:- "+currentD+"/ last:- "+lastD);
+
+            $("#time").show();
+
+            var lastcomponents = new String(lastD).split(' ').slice(1, 4);
+            lastcomponents[1].replace(/^0/, '');
+
+            var curcomponents = new String(currentD).split(' ').slice(1, 4);
+            curcomponents[1].replace(/^0/, '');
+
+            console.info(lastcomponents+"/"+curcomponents);
+
+          /*  $("#graph_time").html("Graph created from "+lastcomponents[0]+"-"+lastcomponents[1]+"-"+lastcomponents[2]+" to "+curcomponents[0]+"-"+curcomponents[1]+"-"+curcomponents[2]);
+*/
+            lowDate.setDate(lowDate.getDate()+7);
+            highDate.setDate(highDate.getDate()+7);
+
+    getPatientData(lowDate,highDate,'last7days');    
+
+            lastD.setDate(lastD.getDate()+7);
+        
+          
+              
+        
+
+            
+        }
+         
+
+    }
+  
+});
+
+var monthValue=false;
+var mon=0;
+$("#lastmonth").click(function(){
+    $( "#week" ).removeClass( "active" );
+    $( "#month" ).addClass( "active" );
+      $("#lastmonth").html("This month");
+      mon=0;
+       dayCount=0;
+    graphPoints.length=0;
+    graphPointsD.lenth=0;
+
+    selectedMonthFirstDate=new Date(d.getFullYear(),n,01);
+      getMonthDate(selectedMonthFirstDate);
+      getPatientData(selectedMonthLastDate,selectedMonthFirstDate,'last7days');
+      imon=0;
+})
+
+$("#lastmonth_left").click(function(){
+
+    $( "#week" ).removeClass( "active" );
+    $( "#month" ).addClass( "active" );
+ dayCount=0;
+    graphPoints.length=0;
+    graphPointsD.lenth=0;
+
+    $("#lastmonth").html("Last month");
+    console.info("left month");
+
+    month.setMonth(month.getMonth()-1);
+
+    (console.info("month date:- "+month));
+        mon++;
+       
+         if(mon==1){
+            $("#lastmonth").html("Last month");
+          
+        }
+        /*else if(mon==2){
+            $("#lastmonth").html("Last "+mon+"nd month");
+           
+        }
+         else if(mon==3){
+            $("#lastmonth").html("Last "+mon+"rd month");
+           
+        }*/
+        else{
+              
+            $("#lastmonth").html(mon+" Months Ago");
+               /* if(mon==12){
+                    $("#lastmonth").html("Last 1st year");
+                }
+                else if(mon==24){
+                    $("#lastmonth").html("Last 2nd year");
+                }
+                else if(mon==36){
+                     $("#lastmonth").html("Last 3rd year");
+                 } 
+                else if(mon>36){
+                    $("#lastmonth").html("No Records");
+                }*/
+            }
+    
+
+    $("#time").show();
+
+    var lastcomponents = new String(month).split(' ').slice(1, 4);
+    lastcomponents[1].replace(/^0/, '');
+
+    console.info(lastcomponents); 
+
+    /*$("#graph_time").html("Graph created for "+lastcomponents[0]+"-"+lastcomponents[2]);*/
+           //if(imon>0)
+                
+           //alert(imon);
+            imon=imon-1;
+           getMonthDate(new Date(selectedMonthFirstDate.getFullYear(),selectedMonthFirstDate.getMonth()-1, 01));
+             
+           getPatientData(selectedMonthLastDate,selectedMonthFirstDate,'last7days');
+
+    monthValue=true;
+}); 
+
+$("#lastmonth_right").click(function(){ 
+ mon--;
+
+    console.info("right month");
+    dayCount=0;
+    graphPoints.length=0;
+    graphPointsD.lenth=0;
+
+    if(monthValue){
+        console.info("first call left");
+
+        $( "#week" ).removeClass( "active" );
+        $( "#month" ).addClass( "active" );
+
+        var components = new String(new Date()).split(' ').slice(1, 4);
+        components[1].replace(/^0/, '');
+        var date=components.join(' ');
+
+        console.info(date);
+
+        var components1 = new String(month).split(' ').slice(1, 4);
+        components1[1].replace(/^0/, '');
+        var date1=components1.join(' ');
+
+        console.info(date1);
+
+        
+
+
+       
+            //alert(mon);
+            month.setMonth(month.getMonth()+1);
+
+           
+            if(mon==0){
+                $("#lastmonth").html("This Month");    
+            }
+            else if(mon==1){
+            $("#lastmonth").html("Last Month");
+            
+            }
+       /* else if(mon==2){
+             
+            $("#lastmonth").html("Last "+mon+"nd month");
+            
+          
+        }
+        else if(mon==3){
+            
+            $("#lastmonth").html("Last "+mon+"rd month");
+            
+           
+        }*/
+        else{
+              
+               if(mon<=0){
+                mon=0;
+                $("#lastmonth").html("This Month");
+               }
+               else{
+                        $("#lastmonth").html(mon+" Months Ago");    
+               }
+            
+            
+           
+        }
+        //alert(mon);
+            
+
+            console.info("month date:- "+month);
+
+            $("#time").show();
+
+            var lastcomponents = new String(month).split(' ').slice(1, 4);
+            lastcomponents[1].replace(/^0/, '');
+
+            console.info(lastcomponents);
+
+            if(imon<0){
+                       imon = imon+1;
+                       // alert(imon);   
+                getMonthDate(new Date(selectedMonthFirstDate.getFullYear(),selectedMonthLastDate.getMonth(), 01));
+             // imon = imon+1;
+             //alert(selectedMonthLastDate+" / "+selectedMonthFirstDate);
+           getPatientData(selectedMonthLastDate,selectedMonthFirstDate,'last7days');
+             
+           if(selectedMonthFirstDate.getMonth()==new Date().getMonth()){
+             $("#lastmonth").html("This Month");
+           }
+            
+        }
+         
+
+    }
+  
+});
+
+
+var getGraphDetailsAsTime=function(currentDate,lastdate,status){
+
+    $.ajax({
+          type: "POST",
+          url: basicUrl+"/rpms/doc/getpatientdata_withtime?access_token="+$.cookie("access_token"),
+          data: "patientID="+patientID+"&datatype="+datatype+"&current="+currentDate+"&last="+lastdate+"&status="+status
+        })
+      .done(function( msg ) {
+        //currentD=lastD;
+        graphPoints.length=0;
+        graphPointsD.length=0;
+        resetALLValues();
+        if(msg.listentity.length>0)
+        {
+
+            var arrayList=[];    
+
+
+            $.each(msg.listentity,function(index,value){
+                if(value.measurementtype=="blood sugar")
+                {
+                    arrayList.push(value.sugervalue);
+                 }
+                else{
+                    arrayList.push(value.pressurediastolic);
+                }   
+            });
+
+
+            var patientData=msg.listentity[0];
+
+            dataPointId= patientData.id;
+
+          //  data_point_id= patientData.id;
+
+            if(patientData.measurementtype=="blood sugar")
+            {
+                 /*if(patientData.units==null){
+
+                                    $("#data_unit").html(patientData.sugervalue);
+                                }
+                                else{
+
+                                    $("#data_unit").html(patientData.sugervalue+" "+$.cookie("unitbloodSugar"));
+                                }*/
+
+                $("#max_value").html(Math.max.apply(Math,arrayList));
+                $("#max_unit").html($.cookie("unitbloodSugar"));
+                $.cookie("patientMaxValue",Math.max.apply(Math,arrayList))
+
+                $("#min_value").html(Math.min.apply(Math,arrayList));
+                $("#min_unit").html($.cookie("unitbloodSugar"));
+                 $.cookie("patientMinValue",Math.min.apply(Math,arrayList))
+
+                if(patientData.glucoseMax==null && patientData.glucoseMin==null){
+                    $("#target_zone").html("Target Zone Glucose: 0-0");
+                }
+                else{
+                     $("#target_zone").html("Target Zone Glucose :  "+$.cookie("targetValueForSugarMin")+"-"+$.cookie("targetValueForSugarMax"));
+                      $.cookie("patientTargetZone",patientData.glucoseMin+"-"+patientData.glucoseMax);
+                }
+                
+            }
+            else{
+                 /*if(patientData.units==null){
+                                   $("#data_unit").html(patientData.pressurediastolic+"/"+patientData.pressuresystolic+" "+$.cookie("unitbloodPressure"));
+                                }
+                                else{
+                                    $("#data_unit").html(patientData.pressurediastolic+"/"+patientData.pressuresystolic+" "+$.cookie("unitbloodPressure"));
+                                }*/
+
+                 $("#max_value").html(Math.max.apply(Math,arrayList));
+                $("#max_unit").html($.cookie("unitbloodPressure"));
+                $.cookie("patientMaxValue",Math.max.apply(Math,arrayList))
+
+                $("#min_value").html(Math.min.apply(Math,arrayList));
+                $("#min_unit").html($.cookie("unitbloodPressure"));
+                 $.cookie("patientMinValue",Math.min.apply(Math,arrayList))
+
+                if(patientData.bloodPressureMax==null && patientData.bloodPressureMin==null){
+                     $("#target_zone_diastolic").html("Target Zone Diastolic : 0");
+                                  $("#target_zone_systolic").html("Target Zone Systolic : 0");
+                }
+                else{
+                    $("#target_zone_diastolic").html("Target Zone Diastolic : "+$.cookie("targetValueForDiastolic"));
+                                  $("#target_zone_systolic").html("Target Zone Systolic : "+$.cookie("targetValueForSystolic"));
+                      $.cookie("patientTargetZone",patientData.bloodPressureMin+"-"+patientData.bloodPressureMax);
+                }
+               
+            }
+
+        //    console.info(Math.max.apply(Math,arrayList)); 
+        //    console.info(Math.min.apply(Math,arrayList));
+
+            var total = 0;
+            $.each(arrayList,function() {
+                total += this;
+            });
+
+        //    console.info("count:- "+total);
+
+            
+            $("#avg_value").html(parseInt(parseInt(total)/(parseInt(arrayList.length))));
+            $("#avg_unit").html($.cookie("unitbloodSugar"));
+            $.cookie("patientAvgValue",parseInt(parseInt(total)/(parseInt(arrayList.length))))
+            /* getavg=parseInt(arrayList.length);
+                          alert(getavg);*/
+            var date=patientData.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+        //     console.info(date);
+             var part=date.split(",");
+            console.info(part);
+            var d=new Date();
+            d.setFullYear(part[0]);
+            d.setMonth(part[1]-1);
+            d.setDate(part[2]);
+            d.setHours(part[3]);
+            d.setMinutes(part[4]); 
+            d.setSeconds(part[5]);
+
+       //     console.info(d);
+
+            var components = new String(d).split(' ').slice(1, 5);
+            components[1].replace(/^0/, '');
+
+
+       //     console.info(components);
+
+           /* $("#date_time").html(components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]);*/
+        }
+ 
+        var xval = 1;
+        var table="";
+        
+        
+        $.each(msg.listentity,function(index,value){
+            table+="<tr>";
+
+
+            var date=value.deviceTime.split('-');
+
+            var dd=date[2].split(' ');
+            var mm=date[1];
+            var yyyy=date[0];
+
+            var d=mm+"-"+dd[0]+"-"+yyyy+" "+components[3];
+
+            table+="<td>"+d+"</td>";
+            /*data+=date+":"+d;*/
+
+            table+="<td>"+value.measurementtype+"</td>";
+            
+           /*data+=datatype+":"+value.measurementtype;*/
+
+            if(value.measurementtype=="blood sugar")
+            {
+
+
+                /* if(value.sugervalue>value.glucoseMax){
+                                high++; 
+                              }
+                              else if(value.sugervalue<value.glucoseMin){  
+                                  low++;     
+                              }
+                              else{
+                                 normal++;
+                              }*/
+                datameasure="blood sugar";
+                 table+="<td><span class='label label-success'>"+value.sugervalue+"</span></td>";
+                 /*data+=datavalue+":"+value.sugervalue;*/
+
+                 var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+          //       console.info(date);
+                 var part=date.split(",");
+           //     console.info(part);
+                var d=new Date();
+                //d.setFullYear(part[0]);
+                //d.setMonth(part[1]);
+                //d.setDate(part[2]);
+                d.setHours(part[3]);
+                d.setMinutes(part[4]); 
+                d.setSeconds(part[5]);
+
+           //     console.info(d);
+
+
+                 var components = new String(d).split(' ').slice(1, 5);
+                        components[1].replace(/^0/, '');
+
+
+                 graphPoints.push({x : d ,y:value.sugervalue,markerType: (parseInt(value.sugervalue) <patientData.glucoseMin)?"square":(parseInt(value.sugervalue)>patientData.glucoseMax)?"triangle":"circle",  markerColor: (parseInt(value.sugervalue)>patientData.glucoseMax )?"red":(parseInt(value.sugervalue)>patientData.glucoseMin)?"yellowgreen":"red", markerSize: 12,toolTipContent:"<ul class=\"actions\"><li><a data-id='"+value.id+"' class=\"viewcommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon2.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"addcommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon3.png\" alt=\"\"></a></li><li><a   data-id='"+value.id+"' data-view='"+value.id+"' class=\"readCommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon4.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"deletecommentGraphSugar\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon1.png\" alt=\"\"></a></li></ul><p class=\"font16\">"+value.sugervalue+" "+$.cookie("unitbloodSugar")+"</p><span class=\"meta-date\">"+components[3] +"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]+"</span>"});
+
+                   titleDate="Glucose Data Points";
+                
+                    /*data+=["status","120-180","yes"];*/
+                    dataunits=$.cookie("unitbloodSugar");
+
+            }
+            else{
+
+               /* if(value.pressuresystolic>value.bloodPressureMax)
+                              {
+                                
+                                  high++;
+                                   
+                              }
+                              else if(value.pressuresystolic<value.bloodPressureMin){
+                                   
+                                    low++;
+                                    
+                              }
+                              else {
+                             
+                                normal++;
+                              
+                              }*/
+                datameasure="blood pressure";
+                 table+="<td><span class='label label-success'>"+value.pressuresystolic+"-"+value.pressurediastolic+"</span></td>";
+                 /* data+=datavalue+":"+value.pressuresystolic+"-"+value.pressurediastolic;*/
+
+                 var date=value.deviceTime.replace('-', ',').replace(' ', ',').replace('-', ',').replace(':', ',').replace(':', ',');
+           //      console.info(date);
+                 var part=date.split(",");
+          //      console.info(part);
+                var d=new Date();
+                //d.setFullYear(part[0]);
+                //d.setMonth(part[1]);
+                //d.setDate(part[2]);
+                d.setHours(part[3]);
+                d.setMinutes(part[4]); 
+                d.setSeconds(part[5]);
+
+           //     console.info(d);
+
+                  var components = new String(d).split(' ').slice(1, 5);
+                            components[1].replace(/^0/, '');
+                            
+                            graphPoints.push({ x : d , y : value.pressurediastolic,markerType: (parseInt(value.pressurediastolic)<patientData.bloodPressureMin)?"square":(parseInt(value.pressuresystolic)>patientData.bloodPressureMax)?"triangle":"circle",  markerColor: (parseInt(value.pressuresystolic)>patientData.bloodPressureMax)?"red":(parseInt(value.pressurediastolic)>=patientData.bloodPressureMin && parseInt(value.pressuresystolic)<=patientData.bloodPressureMax)?"yellowgreen":"red",  markerSize: 12,toolTipContent:"<ul class=\"actions\"><li><a data-id='"+value.id+"' class=\"viewcommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon2.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"addcommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon3.png\" alt=\"\"></a></li><li><a   data-id='"+value.id+"' data-view='"+value.id+"' class=\"readCommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon4.png\" alt=\"\"></a></li><li><a data-id='"+value.id+"' class=\"deletecommentGraphPressure\" href='javascript:void(0)'><img src=\"../resources/images/popup-icon1.png\" alt=\"\"></a></li></ul><p class=\"font16\">"+value.pressurediastolic+"/"+value.pressuresystolic+" "+$.cookie("unitbloodPressure")+"</p><span class=\"meta-date\">"+components[3]+"<br/>"+  components[0]+"/"+components[1]+"/"+components[2]+"</span>"});
+                               /* data+=["hjggh","hjghf","uhgu"];*/
+                    titleDate="Blood Pressure Data Points";
+                    
+                    dataunits=$.cookie("unitbloodPressure");
+                   
+            }
+
+            
+           
+            table+="<td><span class='label label-success'>"+value.fstate+"</span></td>";
+            /*data+=status+":"+value.fstate;*/
+             if(value.measurementtype=="blood sugar")
+            {
+                table+="<td>"+value.glucoseMin+"-"+value.glucoseMax+"</td>";
+                /*data+=target+":"+value.glucoseMin+"-"+value.glucoseMax;*/
+            }
+            else{
+                table+="<td>"+value.bloodPressureMin+"-"+value.bloodPressureMax+"</td>";
+                /*data+=target+":"+value.bloodPressureMin+"-"+value.bloodPressureMax;*/
+            }
+            if(value.docId==null)
+            {
+                table+="<td><div class='switchd switch-off' id='view"+value.id+"'>No</div></td><td>";
+               /* data+=reviewed+":"+"No";*/
+                
+            }
+            else{
+                table+="<td><div class='switchd switch-on' id='view"+value.id+"'>Yes</div></td><td>";
+                /*data+=reviewed+":"+"Yes";*/
+            }
+            table+="<ul class='list-inline'>";
+            table+="<li><a class='black viewcomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-eye'></span></a></li>";
+            table+="<li><a class='black addcomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-comment'></span></a></li>";
+            table+="<li><a class='black readComment' href='javascript:void(0)' data-id='"+value.id+"' data-view='"+value.id+"'><span class='fa fa-check'></span></a></li>";
+            table+="<li><a class='black deletecomment' href='javascript:void(0)' data-id='"+value.id+"'><span class='fa fa-close'></span></a></li>";
+            table+="</ul></td></tr>";
+
+        });
+            getdatatable=table;
+
+        $("#patient_data").html(table);
+
+        chartFunction(graphPoints,titleDate);
+        //chartFunctionPie(low,high,normal,PTtitle);
+
+      })
+      .fail(function() {
+          //login();
+      });
+
+};
+
+
+$("#read_comment").click(function(){
+    
+   /* $("#myModal1").modal('show');*/
+
+    
+});
+
+/*getimage=<img */
+
+/*var doc = new jsPDF('p','pt');
+doc.setFontSize(16);
+doc.text(35, 25, "PATIENT dETAILS");
+/*doc.addImage(getimage, 'jpg', 15, 40, 180, 180);
+var specialElementHandlers = {
+    '#data_in_pdf': function (element,renderer) {
+        return true;
+    }
+};
+
+var columns = ["ID", "Name", "Country", "IP-address", "Email"];
+var data = [
+    [1, "Shaw", "Tanzania", "92.44.246.31", "abrown@avamba.info"],
+    [2, "Nelson", "Kazakhstan", "112.238.42.121", "jjordan@agivu.com"],
+    [3, "Garcia", "Madagascar", "39.211.252.103", "jdean@skinte.biz"],
+    [4, "Richardson", "Somalia", "27.214.238.100", "nblack@midel.gov"],
+    [5, "Kennedy", "Libya", "82.148.96.120", "charrison@tambee.name"]
+];
+ doc.autoTable(columns,data,{});
+var source =   $("#patient_data").html(getdatatable)[0];
+$("#PDF").click(function(){
+    doc.fromHTML(source, 15, 15, {
+                'width': 170,'elementHandlers': specialElementHandlers
+            });
+          
+            doc.save('sample-file.pdf');
+});*/
+
+/*var data = [
+    {"id": 1, "name": "Shaw", "country": "Tanzania", "ip_address": "92.44.246.31", "email": "abrown@avamba.info"},
+    {"id": 2, "name": "Nelson", "country": "Kazakhstan", "ip_address": "112.238.42.121", "email": "jjordan@agivu.com"},
+    {"id": 3, "name": "Garcia", "country": "Madagascar", "ip_address": "39.211.252.103", "email": "jdean@skinte.biz"},
+    {"id": 4, "name": "Richardson", "country": "Somalia", "ip_address": "27.214.238.100", "email": "nblack@midel.gov"},
+    {"id": 5, "name": "Kennedy", "country": "Libya", "ip_address": "82.148.96.120", "email": "charrison@tambee.name"}
+    
+];*/
+/*var gettabledata=graphPoints;*/
+/*$.each(graphPoints,function(index,value){
+    alert(index+":"+value);
+ data=["hello","hello","hello","hello","hello","hello"];
+ 
+});*/
+var columns = ["Date","Data Value","Data FState"];
+var data=[];
+var dataGlucose=[];
+var dataPressure=[];
+var tabledate=0,tabledatavalue=0,tablemark;
+var tabledate1=0,tabledatavalue1=0,datavalues;
+var doc = new jsPDF();
+
+/*doc.addImage(getimage, 'jpg', 15, 40, 180, 180);*/
+$("#PDF").click(function(){
+
+    doc.setFontSize(13);
+doc.setTextColor(128,128,128);
+if($.cookie("patientfirst")!=null){
+        doc.text(20,10,$.cookie("patientfirst"));  
+         //alert($.cookie("patientfirst"))  ;
+}
+else{
+      doc.text(20,10,"RPMS");
+}
+
+doc.setFontSize(9);
+doc.setTextColor(39,80,239);
+if($.cookie("patientMrId")!=null && $.cookie("patientgender")!=null && $.cookie("patientdob")!=null && $.cookie("patientphone")!=null){
+
+doc.text(20,16,"MR-ID :")
+doc.text(32,16,$.cookie("patientMrId")+" |");
+doc.text(50,16," "+$.cookie("patientgender")+" |");
+doc.text(60,16," "+$.cookie("patientdob"));
+doc.text(20,21,"Contact No. :");
+doc.text(40,21,$.cookie("patientphone"));
+
+}
+else{
+        /* doc.text(20,16,"MR-0000"+" |");
+           doc.text(35,16," "+"RPMS"+" |");
+           doc.text(45,16," "+"01/01/01");
+           doc.text(20,21,"1111111111");  */
+}
+        doc.setFontSize(16);
+        doc.setTextColor(128,128,128);
+       
+        if(datatype=="blood sugar"){
+        doc.text(75, 30, "Glucose Data Points");    
+        doc.setFontSize(11);
+        doc.setTextColor(39,80,239);
+        doc.text(20,40,"Target Zone :"+$.cookie("patientTargetZone"));
+        doc.text(62,40," Max Value :"+$.cookie("patientMaxValue"));
+        doc.text(92,40," Min Value :"+$.cookie("patientMinValue"));
+        doc.text(122,40," Avg Value :"+$.cookie("patientAvgValue")); 
+        $.each(graphPoints,function(index,value){
+        tabledate=value.x;
+        tabledatavalue=value.y;
+        if(tabledatavalue<$.cookie("targetValueForSugarMin")){
+        //doc.setTextColor(250,0,0);
+        tablemark="Low";
+     }
+     else if(tabledatavalue>$.cookie("targetValueForSugarMin") && tabledatavalue<$.cookie("targetValueForSugarMax")){
+             //doc.setTextColor(0,128,64);
+             tablemark="Normal";
+     }
+     else{
+             //doc.setTextColor(210,68,0);
+             tablemark="High";
+     }
+     data.push([tabledate,tabledatavalue,tablemark]);
+ });
+
+}
+else{
+       //alert("pressure");
+             doc.text(75, 30, "Blood Pressure Data Points");
+             doc.setFontSize(11);
+             doc.setTextColor(39,80,239);
+             doc.text(20,40,"Target Zone Diastolic :"+$.cookie("targetValueForDiastolic"));
+             doc.text(64,40," Max Value :"+$.cookie("patientMaxValueDiastolic"));
+             doc.text(94,40," Min Value :"+$.cookie("patientMinValueDiastolic"));
+             doc.text(124,40," Avg Value :"+$.cookie("patientAvgValueDiastolic")); 
+
+
+             doc.text(20,45,"Target Zone Systolic :"+$.cookie("targetValueForSystolic"));
+             doc.text(64,45," Max Value :"+$.cookie("patientMaxValueSystolic"));
+             doc.text(94,45," Min Value :"+$.cookie("patientMinValueSystolic"));
+             doc.text(124,45," Avg Value :"+$.cookie("patientAvgValueSystolic")); 
+
+       
+            $.each(graphPoints,function(index,value){
+
+                        dataPressure[index] = value.y;
+
+                       
+                    });
+            $.each(graphPointsD,function(index,value){
+                 
+                tabledate1=value.x;
+                tabledatavalue1=value.y;
+                if(dataPressure[index]>$.cookie("targetValueForDiastolic")&&tabledatavalue1<$.cookie("targetValueForSystolic")){
+
+                tablemark="Normal";
+            }
+            else if(dataPressure[index]>$.cookie("targetValueForDiastolic")&&tabledatavalue1>$.cookie("targetValueForSystolic")){
+
+                tablemark="High";
+            }
+            else if(dataPressure[index]<$.cookie("targetValueForDiastolic")&&tabledatavalue1<$.cookie("targetValueForSystolic")){
+
+                tablemark="Low";
+            }
+                datavalues=dataPressure[index]+"/"+tabledatavalue1;   
+                // alert(datavalues);
+                data.push([tabledate1,datavalues,tablemark]);
+        });
+
+}
+         
+
+  /* var imgData = 'data:image/jpeg;base64,'+ Base64.encode('../resources/images/patient1.jpeg');
+   doc.addImage(imgData, 'JPEG', 150, 40, 180, 180,"chart",true,180);*/
+                doc.autoTable(columns, data,{});
+               
+
+
+                doc.save('table.pdf');
+});
+</script>
+
+<!-- Assigned Patient -->
+<div class="modal fade"  id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Comment</h4>
+      </div>
+      
+      <div class="modal-body">
+        <div class="form form-horizontal">
+          <div class="form-group">
+            <label class="col-md-12">Enter Your Comment</label>
+            <div class="col-md-12">
+                <textarea class="form-control" id="comment1" placeholder="Your comment in this data point here..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        
+               <button id="submit_comment1" class="btn btn-default btn-sm uprCase">Submit</button>
+               <!-- <button id="submit_comment1" class="btn btn-primary btn-sm uprCase">Review</button>
+               <button id="submit_comment1" class="btn btn-danger btn-sm uprCase">Delete</button> -->
+      </div>
+     
+      <script>
+        
+        $("#cancel_assign").click(function(){
+            $('#myModal').modal('hide');
+        });
+
+        $("#submit_comment1").click(function(){
+          
+            if($("#comment1").val()=="")
+            {
+                alert("Please enter Comment.");
+            }
+            else if($("#comment1").val().trim()==""){
+                alert("Blank comment is not allowed")
+            }
+            else{
+                entrydate=new Date();
+                yr=entrydate.getFullYear();
+                mnth=entrydate.getMonth()+1;
+               dt= entrydate.getDate();
+                hrs=entrydate.getHours();
+               mint= entrydate.getMinutes(); 
+                sec=entrydate.getSeconds();
+                //alert(sec)
+                var comment={};
+
+                comment.message=$("#comment1").val();
+                comment.docID=$.cookie("docID");
+                comment.patientID=patientID;
+                comment.isReadNurse='0';
+                comment.isReadDoc='1';
+                comment.data_point_id=patientDataPointId;
+                comment.isDeleted='0';
+                comment.isSentDoc='1';
+                comment.docName=$.cookie("name");
+                comment.entrytime=yr+"-"+mnth+"-"+dt+"-"+" "+hrs+":"+mint+":"+sec;
+
+                console.info(JSON.stringify(comment));
+
+                $.ajax({
+                      type: "POST",
+                      url: basicUrl+"/rpms/doc/datapointcomment?access_token="+$.cookie("access_token"),
+                      data: "comment="+JSON.stringify(comment)
+                    })
+                  .done(function( msg ) {
+                    alert(msg.message);
+                     dataPoint();
+                    $("#comment1").val('');
+                    $('#myModal').modal('hide');
+                  })
+                  .fail(function() {
+                      //login();
+                      $("#comment1").val('');
+                      $('#myModal').modal('hide');
+                  });
+            }
+            
+
+        });
+
+    </script>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- View Comment -->
+<div class="modal fade"  id="myModal1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Load Earlier Comments</h4>
+      </div>
+      
+      <div class="modal-body">
+        <div class="form form-horizontal">
+          <div class="form-group">
+            <div class="col-md-12">
+
+                    <ul id="showcomment" class="patients-list" style="height: 150px; overflow: auto;">
+                    
+                    </ul>
+
+                <!-- <textarea class="form-control" id="comment1" placeholder="Your comment in this data point here..."></textarea> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        
+        $("#cancel_assign").click(function(){
+            $('#myModal1').modal('hide');
+        });
+
+        var dataPoint=function(){
+            //alert("hello");
+            var comment={};
+            comment.docID=$.cookie("docID");
+            comment.patientID=patientID;
+            comment.data_point_id=patientDataPointId;
+            
+            $.ajax({
+                  type: "POST",
+                  url: basicUrl+"/rpms/doc/getdatapointcomment?access_token="+$.cookie("access_token"),
+                  data: "comment="+JSON.stringify(comment)
+                })
+              .done(function( msg ) {
+                console.info(msg.listentity);
+                    if(msg.listentity.length>0)
+                     {
+
+                    var list="";
+
+                    $.each(msg.listentity,function(index,value){
+                        
+                        list+="<li><div class='pull-left'><div class='meta font14'> <span class='gray'></span>"+value.message+"</li>";
+                    }); 
+
+                    $("#showcomment").html(list);
+                }
+                else{
+                    
+                    $("#showcomment").html("<li><div class='pull-left'><div class='meta font14'> <span class='gray'></span>No Comments</li>");
+                }   
+
+              })
+              .fail(function() {
+                  //login();
+                  
+                  $('#myModal').modal('hide');
+              });
+         };     
+
+        var dataReadPoint=function(dataPointId){
+            //alert(dataPointId);
+            var comment={};
+            comment.docID=$.cookie("docID");
+            comment.patientID=patientID;
+            comment.data_point_id=dataPointId;
+            comment.nurseID=$.cookie("nurseID");
+
+            $.ajax({
+                  type: "POST",
+                  url: basicUrl+"/rpms/doc/getdatapointcomment?access_token="+$.cookie("access_token"),
+                  data: "comment="+JSON.stringify(comment)+"&dataPointId="+dataPointId
+                })
+              .done(function( msg ) {
+                console.info(msg.listentity);
+
+                if(msg.listentity.length>0)
+                {
+
+                    var list="";
+
+                    $.each(msg.listentity,function(index,value){
+                        
+                        if(value.docID!=null && value.nurseID!=null){
+
+                         list+="<li class='green'><font size='2px'>"+value.docName+"&nbsp;&nbsp;&nbsp;&nbsp;"+value.entrytime+"</font><br>"+value.message+"</li><li class='blue'><font size='2px'>"+value.nurseName+"&nbsp;&nbsp;&nbsp;&nbsp;"+value.entrytime+"</font><br>"+value.message+"</li>";
+                        }
+                        else if(value.docID !=null){
+                            list+="<li class='green'><font size='2px'>"+value.docName+"&nbsp;&nbsp;&nbsp;&nbsp;"+value.entrytime+"</font><br>"+value.message+"</li>";
+                        }
+                        else{
+                          list+= " <li class='blue'><font size='2px'>"+value.nurseName+"&nbsp;&nbsp;&nbsp;&nbsp;"+value.entrytime+"</font><br>"+value.message+"</li>";
+                        }
+                    }); 
+
+                    $("#show_comment").html(list);
+                }
+                else{
+                    
+                    $("#show_comment").html("<li class='green'>No Comments</li>");
+                }   
+
+              })
+              .fail(function() {
+                  //login();
+                  
+                 // $('#myModal').modal('hide');
+              });
+
+        };
+
+    </script>
+
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

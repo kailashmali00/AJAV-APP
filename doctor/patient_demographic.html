@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>DS4U</title>
+
+    <!-- Google Web Font -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css'> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../resources/css/custom-theme.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <link href="css/ie8.css" rel="stylesheet">
+    <![endif]-->
+     <!--[if lt IE 8]>
+      <link href="css/ie7.css" rel="stylesheet">
+    <![endif]-->
+
+  </head>
+
+  <body class="admin-page super-admin">
+
+    <div class="container-fluid wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo"><a href="doctor-dashboard.html">RPMS</a></h1>
+            <!-- <div class="main-menu dropdown">
+              <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="fa fa-bars"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="">Menu Item1</a></li>
+                <li><a href="">Menu Item2</a></li>
+                <li><a href="">Menu Item3</a></li>
+                <li><a href="">Menu Item4</a></li>
+              </ul>
+            </div>
+            <div class="top-search">
+                <span class="fa fa-search"></span>
+              <input type="text" value="" placeholder="find patients" class="inputbox">
+            </div> -->
+            <div class="user-nav">
+                <div class="dropdown visible-xs">
+                  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                    <img src="../resources/images/demo.png" alt="">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <!-- <li><a href="" title="Notifications"><span class="fa fa-bell"></span> Notifications</a></li> -->
+                    <li><a href="" title="Messages"><span class="fa fa-envelope"></span> Messages</a></li>
+                    <!-- <li><a href="" title="My Account"><span class="fa fa-cog"></span> My Account</a></li> -->
+                    <li><a href="" title="Logout"><span class="fa fa-power-off"></span> Logout</a></li>
+                  </ul>
+                </div>
+                <div class="row hidden-xs">
+                    <div class="col-xs-4">
+                        <div class="img"><img id="ptd" src="../resources/images/demo.png" alt=""></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="user-name"><span class="blue">Hi</span><span id="user"></span></div>
+                        <ul class="list-inline">
+                            <!-- <li><a href="" title="Notifications"><span class="fa fa-bell"></span></a></li> -->
+                           <!--  <li><a href="" title="Messages"><span class="fa fa-envelope"></span></a></li> -->
+                           <li class="dropdown"><a data-toggle="dropdown" href="" title="Messages"><span class="fa fa-envelope"></span></a><sup id="message" style="color:white; font-size:14px;"></sup>
+				              <ul id="notification" class="dropdown-menu dropdown-menu-right" role="menu">
+				                
+				              </ul>
+				            </li>
+                            <!-- <li><a href="" title="My Account"><span class="fa fa-cog"></span></a></li> -->
+                            <li><a href="../login.html" title="Logout"><span class="fa fa-power-off"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </header>
+
+        <!-- Modal -->
+        <div class="modal fade"  id="myModal1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <img src="../resources/images/loading.gif" id="loading12" style="" />
+        </div>
+
+        <!-- Container -->
+        <div class="main-container">
+            <ol class="breadcrumb font12">
+              <li><a href="doctor-dashboard.html">Dashboard</a></li>
+              <li class="active">Update Patient Demographic</li>
+            </ol>
+            <h2 class="orng main-title font24">Update Patient Demographic</h2>
+            <div class="spanrequire">Fields marked with asterisk (*) are required.</div>
+            <div class="well">
+            <!-- <form id="Form" method="post" class="form-horizontal fv-form fv-form-bootstrap" novalidate="novalidate"> -->
+                <div class="form form-horizontal register-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">First Name&nbsp;<span class="spanrequire">*</span></label>
+                                <div class="col-md-8">
+                                    <input type="text" id="firstname" name="firstname" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Middle Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="middlename" name="middlename" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Last Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="lastname" name="lastname" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Nick Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="nickname" name="nickname" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Gender&nbsp;<span class="spanrequire">*</span></label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" value="male" id="male" name="gender" readonly="readonly"> Male</label>
+                                    <label class="radio-inline"><input type="radio" value="female" id="female" name="gender" readonly="readonly"> Female</label>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Date Of Birth&nbsp;<span class="spanrequire">*</span></label>
+                                <div class="col-md-8">
+                                    <!-- <input type="text" id="dob" name="dob" data-mask='00-00-0000' value="" class="form-control"> -->
+                                    <!-- <div class="well"> -->
+                                      <div id="datetimepicker1" class="input-append date input-group">
+                                        <input id="dob" name="dob" data-format="MM-dd-yyyy" type="text" class="form-control" readonly="readonly" />
+                                        <span class="add-on input-group-addon">
+                                          <i class="glyphicon glyphicon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                          </i>
+                                        </span>
+                                      </div>
+                                    <!-- </div>  -->
+                                </div>
+                            </div>
+                        </div>
+                     <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Email ID&nbsp;<span class="spanrequire">*</span></label>
+                                <div class="col-md-8">
+                                    <input type="text" id="email" name="email" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Contact Number&nbsp;<span class="spanrequire">*</span></label>
+                                <div class="col-md-8">
+                                    <input type="text" id="cellphone" name="cellphone" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Other Contact Number</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="homephone" name="homephone" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">SSN Number</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="ssn_number" name="ssn_number" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">MR Number</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="mr_number" name="mr_number" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Address line 1&nbsp;<span class="spanrequire">*</span></label>
+                                <div class="col-md-8">
+                                    <input type="text" id="homeaddress" name="homeaddress" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Address line 2</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="mailingAddress" name="mailingAddress" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">City</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="city" name="city" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">State</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="state" name="state" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Country</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="country" name="country" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Zip Code</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="zipcode" name="zipcode" value="" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Category</label>
+                                <div class="col-md-8">
+                                     <select id="categories" name="categories" class="form-control"> 
+                                     <!-- <option value='Critical'>Critical</option>
+                                     <option value='non-compliant'>Non-Compliant</option>
+                                     <option value='generally_compliant'>Generally Compliant</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Assign A Nurse</label>
+                                <div class="col-md-8">
+                                     <select id="nurse_list" class="form-control" disabled="disabled"> 
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                             <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Blood Pressure (Systolic)</label>
+                                <div class="col-md-7">
+                                 <input type="text" id="blood_presurem" name="blood_presurem" value="" class="form-control">
+                                    <!-- <input type="text" id="blood_presurem" name="blood_presurem" value="" class="form-control"> -->
+                                    <!-- <strong id="bloodpressure">Mm Hg</strong> -->
+                                </div>
+                                <div><strong id="bpm">MmHg</strong></div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Blood Pressure (Diastolic)</label>
+                                <div class="col-md-7">
+                                <input type="text" id="blood_presure" name="blood_presure" value="" class="form-control">
+                                   <!--  <input type="text" id="blood_presure" name="blood_presure" value="" class="form-control"> -->
+                                    <!-- <strong id="bloodpressure">Mm Hg</strong> -->
+                                </div>
+                                <div><strong id="bp">MmHg</strong></div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Blood Sugar (Max. Level)</label>
+                                <div class="col-md-7">
+                                <input type="text" id="blood_sugurm" name="blood_sugurm" value="" class="form-control">
+                                    <!-- <input type="text" id="blood_sugurm" name="blood_sugurm" value="" class="form-control"> -->
+                                    <!-- <strong id="bloodsugar">Mg/dL</strong> -->
+                                </div>
+                                <div><strong id="bloodsugarm">Mmol/L</strong></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Blood Sugar (Min. Level)</label>
+                                <div class="col-md-7">
+                                <input type="text" id="blood_sugur" name="blood_sugur" value="" class="form-control">
+                                    <!-- <input type="text" id="blood_sugur" name="blood_sugur" value="" class="form-control"> -->
+                                    <!-- <strong id="bloodsugar">Mg/dL</strong> -->
+                                </div>
+                                <div><strong id="bloodsugar">Mmol/L</strong></div>
+                            </div>
+                        </div>
+                       
+                       <!--  <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">status</label>
+                                <div class="col-md-8">
+                                    <select id="user_status" class="form-control">
+                                        <option value=''>Select Patient Status</option>
+                                        <option value='0'>Active</option>
+                                        <option value='1'>Deactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> -->
+
+                      <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Image Upload</label>
+                                <div class="col-md-8">
+                                     <img id="img" src="../resources/images/demo.png"  height=100 width=100 readonly="readonly"/>
+                                </div>
+                            </div>
+                        </div> 
+
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-default uprCase" id="cancel"><span class="fa fa-chevron-left"></span> <strong>Cancel</strong></button>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" id="submit" class="btn btn-success uprCase"><span class="fa fa-save"></span> <strong>Update</strong></button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+         
+
+       
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p class="font12 text-center">&copy; Copyright 2014 Remote Patient Monitoring System. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/docs.min.js"></script>
+    <script src="../resources/js/public.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../resources/js/rpms/main.js"></script>
+    <script type="text/javascript" src="../resources/js/bootstrapValidator.js"></script>
+    <script >
+            $('#myModal1').modal('show');
+            checkAccessToken();
+
+            username=$.cookie("username");
+            access_token=$.cookie("access_token");
+            userUniqueID=$.cookie("userUniqueID");
+            
+            $("#user").html(", "+$.cookie("name"));
+            $("#ptd").attr("src",$.cookie("image_url"));
+
+
+            console.info(username+"/"+access_token+"/"+userUniqueID);
+
+            var id;
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            var i = 0;
+            for (i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == "id") {
+                    id = sParameterName[1];
+                }
+            }
+
+           /* var categoryies=function(){
+
+                var category="";
+
+                category +="<option value='generally_compliant'>"+ $.cookie('cat1')+"</option>";
+                category +="<option value='Critical'>"+ $.cookie('cat2')+"</option>";
+                category +="<option value='non-compliant'>"+ $.cookie('cat3')+"</option>";
+
+                $("#categories").html(category);
+
+            };
+            categoryies();
+*/
+             $('#categories').append( new Option($.cookie('cat1'),'Critical') );
+            $('#categories').append( new Option($.cookie('cat2'),'Generally-Compliant') );
+            $('#categories').append( new Option($.cookie('cat3'),'Not-Compliant') );
+            var gethcg=function(hcgID){
+            	$.ajax({
+                      type: "POST",
+                      url: basicUrl+"/rpms/doc/hcg_admin?access_token="+$.cookie("access_token"),
+                      data : "hcgID="+hcgID
+
+                    })
+                  .done(function( msg ) {
+
+                    if(msg.object!=null){ 
+
+                   
+                    	var bloodPresure = msg.object.bloodPressure.split(',');
+			            console.info(bloodPresure);
+			            var gulcose = msg.object.bloodSugar.split(',');
+			            console.info(gulcose);
+
+			            $.cookie("bloodPresure",bloodPresure[2]);
+			            $.cookie("bloodsugar",gulcose[1]);
+
+                    	$("#bp").html($.cookie("unitbloodPressure"));
+            			$("#bloodsugar").html($.cookie("unitbloodSugar"));
+
+
+                        var bloodPresurem = msg.object.bloodPressureMax.split(',');
+                        console.info(bloodPresurem);
+                        var gulcosem = msg.object.bloodSugarMax.split(',');
+                        console.info(gulcosem);
+
+                        $.cookie("bloodPresurem",bloodPresurem[2]);
+                        $.cookie("bloodsugarm",gulcosem[1]);
+
+                        $("#bpm").html($.cookie("unitbloodPressure"));
+                        $("#bloodsugarm").html($.cookie("unitbloodSugar"));
+                    }
+
+                  })
+                  .fail(function() {
+                    alert("Patient Not Found.");
+                     // login();
+                  });
+            };
+            
+         
+            var updatePatientRecords=function(){
+              
+                  $.ajax({
+                      type: "POST",
+                      url: basicUrl+"/rpms/doc/get_patient?access_token="+$.cookie("access_token"),
+                      data : "id="+id
+
+                    })
+                    .done(function( msg ) {
+                    if(msg.object!=null){
+
+                    gethcg(msg.object.hcgID);	
+
+                    var patient=msg.object;
+
+                    $("#firstname").val(patient.firstname);
+                    $("#middlename").val(patient.middlename);
+                    $("#lastname").val(patient.lastname);
+                    $("#nickname").val(patient.nickname);
+
+                    if(patient.sex=="male")
+                    {
+                        $("#male").prop("checked", true); 
+                    }
+                    else if(patient.sex=="female")
+                    {
+                        $("#female").prop("checked", true);
+                    }
+
+                    $("#sex").val(patient.sex);
+                    $("#cellphone").val(patient.cellphone);
+                    $("#homephone").val(patient.homephone);
+                    $("#homeaddress").val(patient.homeaddress);
+                    $("#mailingAddress").val(patient.mailingAddress);
+                    $("#email").val(patient.email);
+                    $("#ssn_number").val(patient.ssn_number);
+                    $("#mr_number").val(patient.mr_number);
+                    $("#city").val(patient.city);
+                    $("#state").val(patient.state);
+                    $("#country").val(patient.country);
+                    $("#zipcode").val(patient.zipcode);
+                    $("#nurse_list").val(patient.nurseID);
+                    $("#categories").val(patient.categories);
+
+                       if(patient.date_of_birth!=null)
+                    {
+                        $("#dob").val(patient.date_of_birth);
+                    }
+
+
+                    if(patient.image!=null)
+                    {
+                       $("#img").attr("src",patient.image); 
+                    }
+                   
+                    $("#blood_sugur").val(patient.bloodsugur);
+                    $("#blood_presure").val(patient.bloodPresure);
+                    
+                     $("#blood_sugurm").val(patient.bloodsugurMax);
+                    $("#blood_presurem").val(patient.bloodPresureMax);
+
+                    
+                    }
+                    else{
+                        window.location.href = "doctor-dashboard.html";
+                    }
+                    $('#myModal1').modal('hide'); 
+                  })
+                  .fail(function() {
+                    alert("Patient Not Found.");
+                      //login();
+                        $('#myModal1').modal('hide'); 
+                  });
+            };
+            
+            // $("#Form").bootstrapValidator({
+            //   framework: 'bootstrap',
+            //   icon: {
+            //       valid: 'glyphicon glyphicon-ok',
+            //       invalid: 'glyphicon glyphicon-remove',
+            //       validating: 'glyphicon glyphicon-refresh'
+            //   },
+            //   fields: {}
+                  
+               
+            // }).on('success.form.bv', function(e) {
+            // // Prevent form submission
+            //     e.preventDefault();
+            //     update_patient();
+            // });
+
+            $("#submit").click(function(){
+                update_patient();
+            });
+
+            var update_patient=function(){
+
+                $('#myModal1').modal('show');
+
+                var patient = {};
+
+                patient.id=id;
+              
+                
+                if($("#categories").val()=="null")
+                {
+                    patient.categories="generally_compliant";
+                }
+                else{
+                    patient.categories=$("#categories").val();
+                }
+                
+                patient.bloodsugur=$("#blood_sugur").val();
+                patient.bloodPresure=$("#blood_presure").val();
+
+                patient.bloodsugurMax=$("#blood_sugurm").val();
+                patient.bloodPresureMax=$("#blood_presurem").val();
+
+                console.info(JSON.stringify(patient));
+
+                if($.cookie("docID")!=null)
+                {
+                    $.ajax({
+                      type: "POST",
+                      url: basicUrl+"/rpms/doc/update_patient"+"?access_token="+$.cookie("access_token"),
+                      data : "patient="+JSON.stringify(patient),
+                    })
+                    .done(function( msg ) {
+                        console.info( msg);
+                        alert(msg.message);
+                        
+                        $("#loading").hide();
+                         window.location.href = "doctor-dashboard.html";
+                        //location.reload();
+                    })
+                    .fail(function() {
+                     alert("Patient Not update");
+                    $('#myModal1').modal('hide');
+                  });
+                }
+                else{
+                    alert("Wrong Credential");
+                    $("#loading").hide();
+                    login();
+                }
+                /*window.location.href = "doctor-dashboard.html?id="+id;*/
+            };
+
+            var getAllDoctorOrNurse=function(){
+
+               
+                var getNurse=function(){
+                        $.ajax({
+                          type: "POST",
+                          url: basicUrl+"/rpms/doc/get_all_nurse"+"?access_token="+$.cookie("access_token"),
+                          data : "id="+id
+                        })
+                        .done(function( msg ) {
+
+                            var list="<option value=''>Please select nurse.</option>";
+
+                            $.each( msg.listentity, function( key, value ) {
+                                list+="<option value='"+value.id+"'>"+value.firstname+"</option>";
+                            });
+                         
+                            $("#nurse_list").html(list);
+
+
+                            updatePatientRecords();            
+                        })
+                        .fail(function() {
+                         alert("Doctor or Nurse details not found.");
+                         
+                      });
+                };
+                
+                getNurse();
+                
+            };
+
+            getAllDoctorOrNurse();
+
+            $("#cancel").click(function(){
+
+              window.location.href = "doctor-dashboard.html";
+
+            });
+
+           var setImage=function(){
+                // Get on screen image
+                var screenImage = $("#img");
+
+                // Create new offscreen image to test
+                var theImage = new Image();
+                theImage.src = screenImage.attr("src");
+
+                // Get accurate measurements from that.
+                var width = theImage.width;
+                var height = theImage.height;
+
+                console.info(width+"/"+height);
+
+                if(width>100 || height>70)
+                {
+                  screenImage.attr('height','70');
+                  screenImage.attr('width','100');
+                }
+            };
+
+            setInterval(setImage, 1000);
+            
+    </script>
+  </body>
+</html>
